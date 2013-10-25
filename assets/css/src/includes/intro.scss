@@ -1,0 +1,18 @@
+/*
+ * @subsection intro
+ */
+ .intro {
+	margin-bottom: 60px;
+	height: 40px;
+	overflow: hidden;
+	
+	transition: 0.5s;
+
+	@extend .cursive;
+	@extend .large;
+}
+
+.intro__closed {
+	height: 0;
+	margin-bottom: 0px;
+}

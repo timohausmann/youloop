@@ -2,8 +2,8 @@ var APP = APP || {};
 
 APP.counter = (function(window, undefined) {
 	
-	var	$currentLoop		= $('#currentLoop'),
-	    	$personalLoop		= $('#personalLoop'),
+	var	$currentLoop		= $('#counter_current'),
+	    	$personalLoop		= $('#counter_storage'),
 	    	personalLoopTime	= 0,
 		currentLoopTime		= 0,
 		is_counting		= false,
@@ -23,7 +23,7 @@ APP.counter = (function(window, undefined) {
 		 */
 		currentLoopTime = 1;
 		
-		if( !Modernizr.localstorage ) return;
+		//if( !Modernizr.localstorage ) return;
 		
 		/*
 		 * check if this video was looped before
@@ -83,9 +83,9 @@ APP.counter = (function(window, undefined) {
 		}
 		
 		//save loop time
-		if( Modernizr.localstorage ) {
+		//if( Modernizr.localstorage ) {
 			localStorage.setItem("youloop_" + currentId, totalLoopTime);
-		}
+		//}
 	}
 	
 

@@ -1,24 +1,32 @@
-.counter {
-	width:200px;
-	margin-left:-210px;
-	text-align:right;
-	position:absolute;
-	left:30px;
-	bottom:0;
-	opacity:0;
-	
-	-webkit-transition:0.5s;
-	-moz-transition:0.5s;
-	-ms-transition:0.5s;
-	-o-transition:0.5s;
-	transition:0.5s;
+/*
+ * @subsection counter
+ */	
+ .counter {
+	position: absolute;
+	left: 30px;
+	bottom: 0;
+	width: 200px;
+	margin-left: -210px;
+	text-align: right;
+	opacity: 0;
+
+	transition: 0.5s;
+
+	@extend .cursive;
+	@extend .small;
 }
-.counter dt {
-	color:#666;
-	margin-bottom:3px;
-	padding-right:1px;
+
+.counter__play {
+	left: 0;
+	opacity: 1;
 }
-.counter dd {
-	font-size:20px;
-	margin-bottom:10px;
+
+.counter--caption {
+	margin-bottom: 3px;
+	padding-right: 1px;
+	color: #666;
+}
+.counter--value {
+	margin-bottom: 10px;
+	font-size: 20px;
 }

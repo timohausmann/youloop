@@ -1,0 +1,28 @@
+/*
+ * @subsection header
+ */
+ .header {
+	border-radius: 50px;
+	background: #252525;
+	width: 256px;
+	height: 100px;
+	margin: 0 0 20px -96px;
+	position: relative;
+	text-align: left;
+	padding-left: 96px;
+}
+
+.header--logo {
+	position: absolute;
+	left: 17px;
+	top: 17px;
+	
+	animation: spinningDisc 6s linear infinite;
+}
+
+.header--caption {
+	font-family: yHarabara, Arial, "Helvetica Neue", Helvetica, sans-serif;
+	font-size: 64px;
+	color: #fff;
+	padding-top: 28px;
+}

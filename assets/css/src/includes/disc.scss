@@ -1,41 +1,50 @@
 /*
  * @subsection disc
- */	
- 
-.disc_mask_outer {
-	position:relative;
-	float:left;
-	margin-right:10px;
+ */
+.disc {
+	position: relative;
+	float: left;
+	margin-right: 10px;
+
+	transform: rotate(-270deg);
+	transition: 0.5s ease-out;
+}
+.disc::after {
+	position: absolute;
+	content: "";
+	border-radius: 8px;
+	width: 16px;
+	height: 16px;
+	left: 38px;
+	top: 38px;
+	background: #000;
+}
+
+.disc__play {
+	animation: spinningDisc 6s linear infinite;
+}
+
+.disc__pause {
+	top:0;
+	animation-play-state: paused;
+}
+
+.disc--mask {
+	width: 90px;
+	height: 90px;
+	overflow: hidden;
+	border-radius: 45px;
+}
 	
-	-webkit-transform:rotate(-270deg);
-	-moz-transform:rotate(-270deg);
-	-ms-transform:rotate(-270deg);
-	-o-transform:rotate(-270deg);
-	transform:rotate(-270deg);
-	
-	-webkit-transition:0.5s ease-out;
-	-moz-transition:0.5s ease-out;
-	-ms-transition:0.5s ease-out;
-	-o-transition:0.5s ease-out;
-	transition:0.5s ease-out;
+.disc--image {
+	height: 90px;
+}
+
+@keyframes(spinningDisc) {
+	0% {
+		transform: rotate(0);
 	}
-	.disc_mask_outer:after {
-		position:absolute;
-		content:"";
-		border-radius:8px;
-		width:16px;
-		height:16px;
-		left:38px;
-		top:38px;
-		background:#000;
+	100% {
+		transform: rotate(360deg);
 	}
-.disc_mask {
-	width:90px;
-	height:90px;
-	overflow:hidden;
-	border-radius:45px;
-	}
-	
-	.disc_mask img {
-		height:90px;
-	}
+}

@@ -4,14 +4,14 @@ APP.main = (function(window, undefined) {
 	
 	var 	$intro 		= $('#intro'),
 		$videoInfo 	= $('#videoInfo'),
-		$playerWrap	= $('#player'),
-		$player 	= $('#player_media'),
+		$playerWrap	= $('#playerWrap'),
+		$player 	= $('#player'),
 		
-		$form 		= $('#form'),
-		$input 		= $('#form_input'),
+		$form 		= $('#videoForm'),
+		$input 		= $('#videoUrl'),
 		
-		$loopStart 	= $('#btn_start'),
-		$loopCancel 	= $('#btn_cancel'),
+		$loopStart 	= $('#loopStart'),
+		$loopCancel 	= $('#loopCancel'),
 		
 		/*
 		 * @var previewData 

@@ -1,0 +1,66 @@
+/*
+ * @subsection videoinfo
+ */	
+.videoinfo {
+	position: relative;
+	z-index: 1;
+	text-align:left;
+	line-height:1em;
+	height:0;
+	margin-bottom:0;
+	overflow: hidden;
+	cursor:pointer;
+	
+	transition:0.5s ease-out;
+
+	@extend .cursive;
+	@extend .large;
+}
+.videoinfo--caption {
+	position:relative;
+	opacity:0;
+	left:-30px;
+	padding-top:33px;
+	padding-bottom:5px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow:hidden;
+	
+	transition:0.5s;
+}
+
+.videoinfo--caption__play {
+	opacity: 1;
+	left: 0;
+}
+
+
+/*
+ * Current
+ */
+.videoinfo__current.videoinfo__open {
+	height: 60px;
+}
+.videoinfo__current .disc_mask_outer {
+	top: 60px;
+}
+
+
+/*
+ * Preview
+ */
+.videoinfo__preview.videoinfo__open {
+	height: 210px;
+	margin-bottom: -100px;
+}
+.videoinfo__preview .disc_mask_outer {
+	top:210px;
+}
+
+.videoinfo__preview.videoinfo__open.videoinfo__play {
+	height: 155px;
+	margin-bottom: -45px;
+}
+.videoinfo__preview.videoinfo__play .disc_mask_outer {
+	top:155px;
+}

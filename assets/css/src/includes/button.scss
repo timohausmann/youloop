@@ -1,7 +1,11 @@
 /*
- * @subsection Buttons
+ * @subsection btn
  */
 .btn {
+	position:relative;
+	opacity:0;
+	left:-40px;
+	
 	background:0;
 	border:0;
 	color:#0cf;
@@ -9,64 +13,17 @@
 	padding-left:32px;
 	line-height:27px;
 	background:url(../img/sprite.png) no-repeat;
+
+	transition:0.5s ease-out;
+
+	@extend .cursive;
+	@extend .large;
 }
 
-.btnLoop {
+.btn__loop {
 	background-position: 0 0;
 }
-.btnCancel {
+.btn__cancel {
 	color:#333;
 	background-position: 0 -30px;
-}
-.btnShuffle {
-	background: transparent;
-	position: relative;
-	text-decoration: none;
-}
-.btnShuffle .icon {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 30px;
-	height: 30px;
-	border-radius: 15px;
-	background:url(../img/sprite.png) -10px -150px repeat-x;
-}
-.btnShuffle .caption {
-	display: block;
-	overflow: hidden;
-	float: left;
-}
-
-.btnPlay,
-.btnRemove,
-.btnMove {
-	padding: 0;
-	width: 30px;
-	height: 30px;
-	background-color: #fff;
-	border-radius: 15px;
-	
-	-webkit-transition: background-color 0.3s;
-	-moz-transition: background-color 0.3s;
-	-ms-transition: background-color 0.3s;
-	-o-transition: background-color 0.3s;
-	transition: background-color 0.3s;
-}
-.btnPlay {
-	background-position:0 -60px;
-}
-.btnMove {
-	cursor: move;
-	background-position: 0 -90px; 
-}
-.btnRemove {
-	background-position: 0 -120px; 
-}
-.btnRemove:hover,
-.btnMove:hover {
-	background-color: #0cf;
-}
-.btnPlay:hover {
-	background-color: #252525;
 }

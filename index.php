@@ -36,59 +36,68 @@
 </head>
 <body>
 
-	<section class="pageWrap">
-		<header class="logo">
-			<img src="assets/img/youloop_logo.png" alt="youloop logo" />
-			<h1>youloop</h1>
+	<section class="page">
+		<header class="header">
+			<img class="header--logo" src="assets/img/youloop_logo.png" alt="youloop logo" />
+			<h1 class="header--caption">youloop</h1>
 		</header>
 		
-		<h2 id="intro" class="intro cursive large">Hier kannst du Youtube-Videos auf Dauerschleife wiederholen!</h2>
+		<h2 class="intro" id="intro">Hier kannst du Youtube-Videos auf Dauerschleife wiederholen!</h2>
 		
-		<section class="playerWrap" id="playerWrap">
-			<div id="videoInfo" class="videoInfo">
-				<div class="disc_mask_outer">
-					<div class="disc_mask">
-						<img class="videoImage" src="http://i2.ytimg.com/vi/miRXrfaQrOs/1.jpg" alt="#" />
+		<section class="player" id="player">
+
+			<div class="videoinfo videoinfo__current" id="videoinfo_current">
+
+				<div class="disc">
+					<div class="disc--mask">
+						<img class="disc--image" src="http://i2.ytimg.com/vi/miRXrfaQrOs/1.jpg" alt="" />
 					</div>
 				</div>
-				<h1 class="videoTitle" class="cursive large"></h1>
+
+				<h1 class="videoinfo--title"></h1>
 			</div>
-			<div class="inner">
-				<div id="player"></div>
+
+			<div class="player--inner">
+
+				<div id="player_media"></div>
 				
-				<dl id="counter" class="counter cursive small">
-					<dt>current loop</dt>
-					<dd id="currentLoop">00:00</dd>
-					<dt style="display:none;">personal loop</dt>
-					<dd style="display:none;" id="personalLoop">00:00</dd>
+				<dl class="counter" id="counter">
+					<dt class="counter--caption">current loop</dt>
+					<dd class="counter--value" id="counter_current">00:00</dd>
+					<dt class="counter--caption hidden">personal loop</dt>
+					<dd class="counter--value hidden" id="counter_storage">00:00</dd>
 				</dl>
 			</div>
 		</section>
 		
-		<div id="previewInfo" class="videoInfo">
-				<div class="disc_mask_outer">
-				<div class="disc_mask">
-					<img class="videoImage" src="http://i2.ytimg.com/vi/miRXrfaQrOs/1.jpg" />
+		<div class="videoinfo videoinfo__preview" id="videoinfo_preview">
+
+			<div class="disc">
+				<div class="disc--mask">
+					<img class="disc--image" src="http://i2.ytimg.com/vi/miRXrfaQrOs/1.jpg" />
 				</div>
 			</div>
-			<h1 class="videoTitle" class="cursive large"></h1>
-			<button id="loopStart" class="btn btnLoop cursive large">loop</button>
-			<button id="loopCancel" class="btn btnCancel cursive large">cancel</button>
+
+			<h1 class="videoinfo--title"></h1>
+
+			<button class="btn btn__loop" id="btn_start">loop</button>
+			<button class="btn btn__cancel" id="btn_cancel">cancel</button>
+
 		</div>
 		
-		<form action="" method="post" class="videoForm" id="videoForm">
-			<label class="cursive small" for="videoUrl">Kopiere einfach die <dfn>Video-URL von YouTube</dfn> in dieses Feld:</label>
-			<input class="videoUrl cursive large" type="text" id="videoUrl" name="videoUrl" placeholder="http://youtube.com/watch?" />
+		<form action="" method="post" class="form" id="form">
+			<label class="form--caption" for="form_input">Kopiere einfach die <dfn>Video-URL von YouTube</dfn> in dieses Feld:</label>
+			<input class="form--input" id="form_input" type="text" name="v" placeholder="http://youtube.com/watch?" />
 		</form>
 	</section>
 
-	<script src="assets/js/libs/jquery-1.10.2.min.js"></script>
 	<script src="assets/js/libs/jsapi.js"></script>
 	<!--script type="text/javascript" src="http://www.google.com/jsapi"></script-->
 	<script type="text/javascript">
 		google.load("swfobject", "2.1");
 	</script>
 
+	<script src="assets/js/libs/jquery-1.10.2.min.js"></script>
 	<script src="assets/js/app/main.js"></script>
 	<script src="assets/js/app/ytapi.js"></script>
 	<script src="assets/js/app/preview.js"></script>
