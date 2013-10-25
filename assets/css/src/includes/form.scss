@@ -57,6 +57,9 @@
 	top: 26px;
 	
 	animation: flyingError 1s ease-out 1;
+
+	@extend .cursive;
+	@extend .large;
 }
 
 @keyframes flyingError {

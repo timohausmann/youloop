@@ -54,7 +54,7 @@
 					</div>
 				</div>
 
-				<h1 class="videoinfo--title"></h1>
+				<h1 class="videoinfo--caption"></h1>
 			</div>
 
 			<div class="player--inner">
@@ -78,7 +78,7 @@
 				</div>
 			</div>
 
-			<h1 class="videoinfo--title"></h1>
+			<h1 class="videoinfo--caption"></h1>
 
 			<button class="btn btn__loop" id="btn_start">loop</button>
 			<button class="btn btn__cancel" id="btn_cancel">cancel</button>
@@ -99,8 +99,9 @@
 
 	<script src="assets/js/libs/jquery-1.10.2.min.js"></script>
 	<script src="assets/js/app/main.js"></script>
-	<script src="assets/js/app/ytapi.js"></script>
-	<script src="assets/js/app/preview.js"></script>
+	<script src="assets/js/app/form.js"></script>
+	<script src="assets/js/app/videoinfo.js"></script>
+	<script src="assets/js/app/player.js"></script>
 	<script src="assets/js/app/counter.js"></script>
 	
 	<!--script src="assets/js/script.min.js"></script-->

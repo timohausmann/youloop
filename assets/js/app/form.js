@@ -1,26 +1,11 @@
 var APP = APP || {};
 
-APP.main = (function(window, undefined) {
+APP.form = (function(window, undefined) {
 	
-	var 	$intro 		= $('#intro'),
-		$videoInfo 	= $('#videoInfo'),
-		$playerWrap	= $('#playerWrap'),
-		$player 	= $('#player'),
-		
-		$form 		= $('#videoForm'),
-		$input 		= $('#videoUrl'),
-		
-		$loopStart 	= $('#loopStart'),
-		$loopCancel 	= $('#loopCancel'),
-		
-		/*
-		 * @var previewData 
-		 * @var videoData
-		 * holding data for preview & current video
-		 * keys: id, title, image, related
-		 */
-		previewData,
-		videoData,
+	var 	$form 		= $('#form'),
+		$input 		= $('#form_input'),
+		$loopStart 	= $('#btn_start'),
+		$loopCancel 	= $('#btn_cancel'),
 		
 		/*
 		 * @var is_player_visible
@@ -52,23 +37,21 @@ APP.main = (function(window, undefined) {
 		 * button loop
 		 */
 		$loopStart
-			.on('click', handleLoopStart);
+			.on('click', handleStart);
 		
 		/*
 		 * button cancel
 		 */
 		$loopCancel
-			.on('click', APP.preview.close);   
+			.on('click', handleCancel);   
 			
 			
 		/*
 		 * dev
 		 */
-		/*
-		$input
+		/*$input
 			.val('http://www.youtube.com/watch?feature=endscreen&NR=1&v=R8MWKsheHxk')
-			.trigger('keyup');
-		*/
+			.trigger('keyup');*/
 				
 	}
 	
@@ -78,7 +61,9 @@ APP.main = (function(window, undefined) {
 	 * fire the ajax request after 500ms
 	 */
 	function handleKeyup() {
+
 		clearTimeout(inputTimeout);
+
 		inputTimeout = setTimeout(function() {
 			
 			if($input.val() === "") return;
@@ -100,7 +85,7 @@ APP.main = (function(window, undefined) {
 	/*
 	 * do stuff before loading the player
 	 */
-	function handleLoopStart() {
+	function handleStart() {
 		
 		/*
 		 * a new loop will be done,
@@ -108,7 +93,7 @@ APP.main = (function(window, undefined) {
 		 */
 		videoData = previewData;
 		
-		updateVideoInfo();
+		APP.videoinfo.update();
 		
 		APP.preview.close();
 		
@@ -159,18 +144,17 @@ APP.main = (function(window, undefined) {
 		
 		
 	}
-	
+
 
 	/*
-	 * update the video info shown above the video
+	 * cancel
 	 */
-	function updateVideoInfo() {
-		
-		$videoInfo
-			.find('.videoTitle').html( videoData.title )
-			.end()
-			.find('.videoImage').attr('src', videoData.image );
+	function handleCancel() {
+		APP.preview.close();
 	}
+	
+
+	
 	
 	
 	/*
@@ -179,13 +163,14 @@ APP.main = (function(window, undefined) {
 	 */
 	function createFormError( message ) {		
 
-		var $error = $('<span class="flyingError cursive large">'+ message +'</span>');
+		var $error = $('<span class="form--error">'+ message +'</span>');
 
 		$form.append( $error );
 
-		window.setTimeout(function() {
+		$error.on( APP.animEndEvent, function() {
+
 			$error.remove(); 
-		}, 1000);
+		});
 		
 	}
 	
@@ -213,8 +198,10 @@ APP.main = (function(window, undefined) {
 	 * @param Object data	The ajax result
 	 */
 	function processAjax( data ) {
+
+		console.log( data );
 		
-		if(data.status == "ok") {
+		if(data.status === "ok") {
 			
 			previewData = {
 				id : data.id,
@@ -223,108 +210,20 @@ APP.main = (function(window, undefined) {
 				related : data.data.related
 			};
 			
-			APP.preview.create( previewData );
+			APP.videoinfo.createPreview( previewData );
 			
-		} else if(data.status == "no_id") {
-			createFormError( 'keine ID gefunden' );
+		} else if(data.status === "no_id") {
+			createFormError( 'keine Video ID gefunden' );
 			
-		} else if(data.status == "invalid_id") {
-			createFormError( 'ungültige ID' );
+		} else if(data.status === "invalid_id") {
+			createFormError( 'ungültige Video ID' );
 			
 		}
-	}
-	
-
-	/*
-	 * create a new youtube player and insert it into the dom
-	 * @param String video_id	The youtube video id
-	 */
-	function loadPlayer( video_id ) {
-		
-		if( typeof video_id === 'undefined' ) {
-			video_id = videoData.id;
-		}
-		
-		var	urlParams = {
-				enablejsapi : 1,
-				playerapiid : 'ytplayer',
-				fs : 1,
-				loop : 1,
-				autoplay : 1,
-				version : 2
-			},
-			embedUrl = 'http://www.youtube.com/v/'+ video_id + '?',
-			params = { 
-				allowScriptAccess: "always", 
-				bgcolor: "#000000" 
-			},
-			atts = { 
-				id: "player" 
-			},	
-			flashvars = {};
-		
-		for( key in urlParams ) {
-			embedUrl += key + '=' + urlParams[key] + '&';
-		}
-		
-		swfobject.embedSWF(embedUrl, "player", "550", "309", "9", null, flashvars, params, atts);
-	}
-	
-
-	/*
-	 * EventListener for YouTube API : play
-	 */
-	function onVideoPlay() {
-		
-		$playerWrap
-			.removeClass('pause')
-			.addClass('play');
-			
-		APP.counter.start();
-	}
-	
-
-	/*
-	 * EventListener for YouTube API : pause
-	 */
-	function onVideoPause() {
-		$playerWrap
-			.addClass('pause');
-		
-		APP.counter.stop();
-	}
-	
-
-	/*
-	 * EventListener for YouTube API : end
-	 */
-	function onVideoEnd() {
-	}
-	
-	
-	function getVideoData() {
-		return videoData;
-	}
-	
-	function setVideoData( value ) {
-		videoData = value;
 	}
 	
 	       
 	return {
-		init : init,
-		onVideoPlay : onVideoPlay,
-		onVideoPause : onVideoPause,
-		onVideoEnd : onVideoEnd,
-		
-		loadPlayer : loadPlayer,
-		
-		getVideoData : getVideoData,
-		setVideoData : setVideoData,
-		updateVideoInfo: updateVideoInfo
+		init : init
 	};
 	
 })(window);
-
-
-$(APP.main.init);
