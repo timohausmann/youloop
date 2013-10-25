@@ -1,4 +1,10 @@
 @font-face {
-	font-family: "yHarabara";
-	src: url("../fonts/Harabara.ttf");
+    font-family: 'Harabara';
+    src: url('harabara-webfont.eot');
+    src: url('harabara-webfont.eot?#iefix') format('embedded-opentype'),
+         url('harabara-webfont.woff') format('woff'),
+         url('harabara-webfont.ttf') format('truetype'),
+         url('harabara-webfont.svg#harabarabold') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
