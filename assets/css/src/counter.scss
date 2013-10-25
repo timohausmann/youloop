@@ -1,0 +1,24 @@
+.counter {
+	width:200px;
+	margin-left:-210px;
+	text-align:right;
+	position:absolute;
+	left:30px;
+	bottom:0;
+	opacity:0;
+	
+	-webkit-transition:0.5s;
+	-moz-transition:0.5s;
+	-ms-transition:0.5s;
+	-o-transition:0.5s;
+	transition:0.5s;
+}
+.counter dt {
+	color:#666;
+	margin-bottom:3px;
+	padding-right:1px;
+}
+.counter dd {
+	font-size:20px;
+	margin-bottom:10px;
+}

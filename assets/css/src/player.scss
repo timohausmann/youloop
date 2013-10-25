@@ -1,0 +1,40 @@
+/*
+ * @subsection playerWrap
+ */	
+.playerWrap {
+	height:0;
+	margin-bottom: 0;
+	
+	-webkit-transition:0.5s ease-out;
+	-moz-transition:0.5s ease-out;
+	-ms-transition:0.5s ease-out;
+	-o-transition:0.5s ease-out;
+	transition:0.5s ease-out;
+	}
+	.playerWrap.open {
+		height: 369px;
+		margin-bottom: 40px;
+	}
+	
+	
+	
+	
+	.playerWrap .inner {
+		height:0;
+		position:relative;
+		background:#000;
+		overflow:hidden;
+		
+		-webkit-transition:0.5s ease-out;
+		-moz-transition:0.5s ease-out;
+		-ms-transition:0.5s ease-out;
+		-o-transition:0.5s ease-out;
+		transition:0.5s ease-out;
+	}
+	
+	.playerWrap.open .inner {
+		height:309px;
+	}
+	.playerWrap.play .inner {
+		overflow:visible;
+	}
