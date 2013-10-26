@@ -21,11 +21,6 @@
 	}
 }
 
-.form--caption__play {
-	color: #fff;
-	margin-left: -240px;
-}
-
 .form--input {
 	display: block;
 	color: #646464;
@@ -45,8 +40,19 @@
 	@extend .large;
 }
 
-.form--input__play {
-	top: -55px;
+/*
+ * Play State
+ */
+.form__play {
+
+	.form--input {
+		top: -55px;
+	}
+
+	.form--caption {
+		color: #fff;
+		margin-left: -240px;
+	}
 }
 
 

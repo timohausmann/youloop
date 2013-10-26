@@ -18,8 +18,8 @@
 }
 .videoinfo--caption {
 	position:relative;
-	/*opacity:0;*/
-	left:-30px;
+	/*opacity:0;
+	left:-30px;*/
 	padding-top:33px;
 	padding-bottom:5px;
 	white-space: nowrap;
@@ -41,7 +41,7 @@
 .videoinfo__current.videoinfo__open {
 	height: 60px;
 }
-.videoinfo__current .disc_mask_outer {
+.videoinfo__current .disc {
 	top: 60px;
 }
 
@@ -53,7 +53,7 @@
 	height: 210px;
 	margin-bottom: -100px;
 }
-.videoinfo__preview .disc_mask_outer {
+.videoinfo__preview .disc {
 	top:210px;
 }
 
@@ -61,6 +61,6 @@
 	height: 155px;
 	margin-bottom: -45px;
 }
-.videoinfo__preview.videoinfo__play .disc_mask_outer {
+.videoinfo__preview.videoinfo__play .disc {
 	top:155px;
 } 

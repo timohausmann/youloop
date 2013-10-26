@@ -6,6 +6,15 @@ APP.form = (function(window, undefined) {
 		$input 		= $('#form_input'),
 		$loopStart 	= $('#btn_start'),
 		$loopCancel 	= $('#btn_cancel'),
+
+		/*
+		 * @var previewData 
+		 * @var videoData
+		 * holding data for preview & current video
+		 * keys: id, title, image, related
+		 */
+		previewData,
+		videoData,
 		
 		/*
 		 * @var is_player_visible
@@ -49,9 +58,9 @@ APP.form = (function(window, undefined) {
 		/*
 		 * dev
 		 */
-		/*$input
+		$input
 			.val('http://www.youtube.com/watch?feature=endscreen&NR=1&v=R8MWKsheHxk')
-			.trigger('keyup');*/
+			.trigger('keyup');
 				
 	}
 	
@@ -93,9 +102,9 @@ APP.form = (function(window, undefined) {
 		 */
 		videoData = previewData;
 		
-		APP.videoinfo.update();
+		APP.videoinfo.createCurrent( videoData );
 		
-		APP.preview.close();
+		APP.videoinfo.closePreview();
 		
 		/*
 		 * init the counter
@@ -108,27 +117,22 @@ APP.form = (function(window, undefined) {
 			/*
 			 * set classes to show the player
 			 */
-			$intro
-				.addClass('closed');
-				
-			$videoInfo
-				.addClass('open');
-				
-			$playerWrap
-				.addClass('open');
+			$('#videoinfo_current').addClass('videoinfo__open');
 			
-			$('#previewInfo')
-				.addClass('play');
+			$('#videoinfo_preview').addClass('videoinfo__play');
+
+			$('#intro').addClass('intro__closed');
+			
+			$('#player').addClass('player__open');
 				
-			$form
-				.addClass('play');
+			$('#form').addClass('form__play');
 				
 			/*
 			 * after 500ms, all animations are done
 			 * init the player
 			 */
 			window.setTimeout(function() {
-				loadPlayer();
+				APP.player.load( videoData.id );
 			}, 500);
 			
 			is_player_visible = true;
@@ -139,7 +143,7 @@ APP.form = (function(window, undefined) {
 			 * if the player is already visible,
 			 * load the new video instant
 			 */
-			loadPlayer();
+			APP.player.load( videoData.id );
 		}
 		
 		
@@ -150,7 +154,7 @@ APP.form = (function(window, undefined) {
 	 * cancel
 	 */
 	function handleCancel() {
-		APP.preview.close();
+		APP.videoinfo.closePreview();
 	}
 	
 
@@ -199,7 +203,7 @@ APP.form = (function(window, undefined) {
 	 */
 	function processAjax( data ) {
 
-		console.log( data );
+		//console.log( data );
 		
 		if(data.status === "ok") {
 			

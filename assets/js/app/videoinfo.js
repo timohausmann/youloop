@@ -25,6 +25,10 @@ APP.videoinfo = (function(window, undefined) {
 	function createPreview( videodata ) {
 		create( $preview, videodata );
 	}
+
+	function createCurrent( videodata ) {
+		create( $current, videodata );
+	}
 	
 	/*
 	 * open the video preview and update values
@@ -44,9 +48,9 @@ APP.videoinfo = (function(window, undefined) {
 	/*
 	 * close the video preview
 	 */
-	function close( $container ) {
+	function closePreview() {
 
-		$container
+		$preview
 			.removeClass('videoinfo__open');
 	}
 	
@@ -54,7 +58,8 @@ APP.videoinfo = (function(window, undefined) {
 	return {
 		init : init,
 		createPreview: createPreview,
-		close : close
+		createCurrent: createCurrent,
+		closePreview : closePreview
 	};
 	
 })(window);

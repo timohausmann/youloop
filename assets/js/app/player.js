@@ -2,7 +2,8 @@ var APP = APP || {};
 
 APP.player = (function(window, undefined) {
 
-	var videoData;
+	var 	dom_id = 'player_media',
+		videoData;
 
 
 
@@ -19,10 +20,11 @@ APP.player = (function(window, undefined) {
 	 * create a new youtube player and insert it into the dom
 	 * @param String video_id	The youtube video id
 	 */
-	function loadPlayer( video_id ) {
+	function load( video_id ) {
 		
 		if( typeof video_id === 'undefined' ) {
-			video_id = videoData.id;
+			console.log('no video id');
+			return;
 		}
 		
 		var	urlParams = {
@@ -47,7 +49,7 @@ APP.player = (function(window, undefined) {
 			embedUrl += key + '=' + urlParams[key] + '&';
 		}
 		
-		swfobject.embedSWF(embedUrl, "player", "550", "309", "9", null, flashvars, params, atts);
+		swfobject.embedSWF(embedUrl, dom_id, "550", "309", "9", null, flashvars, params, atts);
 	}
 	
 
@@ -97,7 +99,7 @@ APP.player = (function(window, undefined) {
 		onVideoPause : onVideoPause,
 		onVideoEnd : onVideoEnd,
 		
-		loadPlayer : loadPlayer,
+		load : load,
 		
 		getVideoData : getVideoData,
 		setVideoData : setVideoData
@@ -114,7 +116,7 @@ APP.player = (function(window, undefined) {
  * YouTube API Functions
  */
 function onYouTubePlayerReady(playerId) {
-	var player = document.getElementById("player");
+	var player = document.getElementById(dom_id);
 	player.addEventListener("onStateChange", "onPlayerStateChange");
 }
 
