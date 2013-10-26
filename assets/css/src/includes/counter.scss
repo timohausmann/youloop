@@ -3,12 +3,13 @@
  */	
  .counter {
 	position: absolute;
-	left: 30px;
+	/*
+	opacity: 0;
+	left: 30px;*/
 	bottom: 0;
 	width: 200px;
 	margin-left: -210px;
 	text-align: right;
-	opacity: 0;
 
 	transition: 0.5s;
 

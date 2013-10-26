@@ -2,8 +2,8 @@ var APP = APP || {};
 
 APP.counter = (function(window, undefined) {
 	
-	var	$currentLoop		= $('#counter_current'),
-	    	$personalLoop		= $('#counter_storage'),
+	var	$current		= $('#counter_current'),
+	    	$storage		= $('#counter_storage'),
 	    	personalLoopTime	= 0,
 		currentLoopTime		= 0,
 		is_counting		= false,
@@ -32,7 +32,7 @@ APP.counter = (function(window, undefined) {
 			
 			personalLoopTime = parseInt( localStorage.getItem("youloop_" + currentId) );
 			
-			showPersonalLoop();
+			showStorageLoop();
 		}
 	}
 	
@@ -69,7 +69,7 @@ APP.counter = (function(window, undefined) {
 		
 		currentLoopTime = currentLoopTime+1;
 		
-		$currentLoop.html( minutes + ':' + seconds );
+		$current.html( minutes + ':' + seconds );
 		
 		if( personalLoopTime ) {
 			
@@ -79,7 +79,7 @@ APP.counter = (function(window, undefined) {
 			if( personalMinutes < 10) personalMinutes = "0" + personalMinutes;
 			if( personalSeconds < 10) personalSeconds = "0" + personalSeconds;
 			
-			$personalLoop.html( personalMinutes + ':' + personalSeconds );
+			$storage.html( personalMinutes + ':' + personalSeconds );
 		}
 		
 		//save loop time
@@ -110,32 +110,32 @@ APP.counter = (function(window, undefined) {
 		personalLoopTime = 0;
 		currentLoopTime	= 0;
 		
-		$currentLoop.html( '00:00' );
-		$personalLoop.html( '00:00' );
+		$current.html( '00:00' );
+		$storage.html( '00:00' );
 		
-		hidePersonalLoop();
+		hideStorageLoop();
 	}
 	
 
 	/*
 	 * show personal loop
 	 */
-	function showPersonalLoop() {
-		$personalLoop
+	function showStorageLoop() {
+		$storage
 				.prev()
 				.andSelf()
-				.show();
+				.removeClass('hidden');
 	}
 	
 
 	/*
 	 * hide personal loop
 	 */
-	function hidePersonalLoop() {
-		$personalLoop
+	function hideStorageLoop() {
+		$storage
 				.prev()
 				.andSelf()
-				.hide();
+				.addClass('hidden');
 	}
 	
 	
