@@ -38,6 +38,7 @@ APP.player = (function(window, undefined) {
 			},
 			embedUrl = 'http://www.youtube.com/v/'+ video_id + '?',
 			params = { 
+				allowFullScreen: "true",
 				allowScriptAccess: "always", 
 				bgcolor: "#000000" 
 			},
