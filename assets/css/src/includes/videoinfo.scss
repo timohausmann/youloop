@@ -17,7 +17,7 @@
 	@extend .large;
 }
 .videoinfo--caption {
-	position:relative;
+	position:relative; 
 	/*opacity:0;
 	left:-30px;*/
 	padding-top:33px;
@@ -41,9 +41,6 @@
 .videoinfo__current.videoinfo__open {
 	height: 60px;
 }
-.videoinfo__current .disc {
-	top: 60px;
-}
 
 
 /*
@@ -52,9 +49,6 @@
 .videoinfo__preview.videoinfo__open {
 	height: 210px;
 	margin-bottom: -100px;
-}
-.videoinfo__preview .disc {
-	top:210px;
 }
 
 .videoinfo__preview.videoinfo__open.videoinfo__play {

@@ -2,7 +2,8 @@ var APP = APP || {};
 
 APP.player = (function(window, undefined) {
 
-	var 	dom_id = 'player_media',
+	var 	$player = $('#player'),
+		yt_dom_id = 'player_media',
 		videoData;
 
 
@@ -33,7 +34,7 @@ APP.player = (function(window, undefined) {
 				fs : 1,
 				loop : 1,
 				autoplay : 1,
-				version : 2
+				version : 3
 			},
 			embedUrl = 'http://www.youtube.com/v/'+ video_id + '?',
 			params = { 
@@ -41,7 +42,7 @@ APP.player = (function(window, undefined) {
 				bgcolor: "#000000" 
 			},
 			atts = { 
-				id: "player" 
+				id: yt_dom_id 
 			},	
 			flashvars = {};
 		
@@ -49,7 +50,7 @@ APP.player = (function(window, undefined) {
 			embedUrl += key + '=' + urlParams[key] + '&';
 		}
 		
-		swfobject.embedSWF(embedUrl, dom_id, "550", "309", "9", null, flashvars, params, atts);
+		swfobject.embedSWF(embedUrl, yt_dom_id, "550", "309", "9", null, flashvars, params, atts);
 	}
 	
 
@@ -57,10 +58,17 @@ APP.player = (function(window, undefined) {
 	 * EventListener for YouTube API : play
 	 */
 	function onVideoPlay() {
+
+		console.log('onVideoPlay', $('#videoinfo_current').find('.disc') );
 		
-		$playerWrap
+		/*$playerWrap
 			.removeClass('pause')
-			.addClass('play');
+			.addClass('play');*/
+
+		$('#videoinfo_current')
+			.find('.disc')
+			.removeClass('disc__pause')
+			.addClass('disc__play');
 			
 		APP.counter.start();
 	}
@@ -70,8 +78,13 @@ APP.player = (function(window, undefined) {
 	 * EventListener for YouTube API : pause
 	 */
 	function onVideoPause() {
-		$playerWrap
-			.addClass('pause');
+
+		/*$playerWrap
+			.addClass('pause');*/
+
+		$('#videoinfo_current')
+			.find('.disc')
+			.addClass('disc__pause');
 		
 		APP.counter.stop();
 	}
@@ -91,6 +104,58 @@ APP.player = (function(window, undefined) {
 	function setVideoData( value ) {
 		videoData = value;
 	}
+
+
+
+
+
+
+
+	/*
+	 * YouTube API Functions
+	 */
+	window.onYouTubePlayerReady = function(playerId) {
+		var player = document.getElementById(yt_dom_id);
+		player.addEventListener("onStateChange", "onPlayerStateChange");
+	}
+
+
+	window.onPlayerStateChange = function(state) {
+		
+		var trace;
+		
+		switch(state) {
+			case -1:
+				trace = "unstarted";
+				break;
+			case 0:
+				trace = "video ended";
+				APP.player.onVideoEnd();
+				break;
+			case 1:
+				trace = "video started";
+				APP.player.onVideoPlay();
+				break;
+			case 2:
+				trace = "video paused";
+				APP.player.onVideoPause();
+				break;
+			case 3:
+				trace = "buffering..";
+				break;
+			case 5:
+				trace = "video cued";
+				break;
+			default:
+				trace = "unknown process";
+		}
+		console.log(trace);	
+	}
+
+
+
+
+
 	
 	       
 	return {
@@ -112,43 +177,3 @@ APP.player = (function(window, undefined) {
 
 
 
-/*
- * YouTube API Functions
- */
-function onYouTubePlayerReady(playerId) {
-	var player = document.getElementById(dom_id);
-	player.addEventListener("onStateChange", "onPlayerStateChange");
-}
-
-
-function onPlayerStateChange(state) {
-	
-	var trace;
-	
-	switch(state) {
-		case -1:
-			trace = "unstarted";
-			break;
-		case 0:
-			trace = "video ended";
-			APP.player.onVideoEnd();
-			break;
-		case 1:
-			trace = "video started";
-			APP.player.onVideoPlay();
-			break;
-		case 2:
-			trace = "video paused";
-			APP.player.onVideoPause();
-			break;
-		case 3:
-			trace = "buffering..";
-			break;
-		case 5:
-			trace = "video cued";
-			break;
-		default:
-			trace = "unknown process";
-	}
-	console.log(trace);	
-}

@@ -57,7 +57,7 @@
 				<h1 class="videoinfo--caption"></h1>
 			</div>
 
-			<div class="player--inner">
+			<div class="player--inner" id="player_inner">
 
 				<div id="player_media"></div>
 				
@@ -91,9 +91,55 @@
 		</form>
 	</section>
 
-	<script src="assets/js/libs/jsapi.js"></script>
-	<!--script type="text/javascript" src="http://www.google.com/jsapi"></script-->
-	<script type="text/javascript">
+
+	<script>
+
+		/*
+		 * YouTube API Functions
+		 */
+		function onYouTubePlayerReady(playerId) {
+			var player = document.getElementById(yt_dom_id);
+			player.addEventListener("onStateChange", "onPlayerStateChange");
+		}
+
+
+		function onPlayerStateChange(state) {
+			
+			var trace;
+			
+			switch(state) {
+				case -1:
+					trace = "unstarted";
+					break;
+				case 0:
+					trace = "video ended";
+					APP.player.onVideoEnd();
+					break;
+				case 1:
+					trace = "video started";
+					APP.player.onVideoPlay();
+					break;
+				case 2:
+					trace = "video paused";
+					APP.player.onVideoPause();
+					break;
+				case 3:
+					trace = "buffering..";
+					break;
+				case 5:
+					trace = "video cued";
+					break;
+				default:
+					trace = "unknown process";
+			}
+			console.log(trace);	
+		}
+
+	</script>
+
+	<!--script src="assets/js/libs/jsapi.js"></script-->
+	<script src="http://www.google.com/jsapi"></script>
+	<script>
 		google.load("swfobject", "2.1");
 	</script>
 

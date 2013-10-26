@@ -124,6 +124,8 @@ APP.form = (function(window, undefined) {
 			$('#intro').addClass('intro__closed');
 			
 			$('#player').addClass('player__open');
+
+			$('#player_inner').addClass('player--inner__open');
 				
 			$('#form').addClass('form__play');
 				
