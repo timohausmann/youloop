@@ -4,7 +4,7 @@ APP.counter = (function(window, undefined) {
 	
 	var	$current		= $('#counter_current'),
 	    	$storage		= $('#counter_storage'),
-	    	personalLoopTime	= 0,
+	    	storageLoopTime		= 0,
 		currentLoopTime		= 0,
 		is_counting		= false,
 		
@@ -18,19 +18,15 @@ APP.counter = (function(window, undefined) {
 		
 		currentId = id;
 		
-		/*
-		 * very first second before first interval
-		 */
+		//first second before first interval
 		currentLoopTime = 1;
 		
 		//if( !Modernizr.localstorage ) return;
 		
-		/*
-		 * check if this video was looped before
-		 */
+		//check if this video was looped before
 		if( localStorage.getItem("youloop_" + currentId) ) {
 			
-			personalLoopTime = parseInt( localStorage.getItem("youloop_" + currentId) );
+			storageLoopTime = parseInt( localStorage.getItem("youloop_" + currentId) );
 			
 			showStorageLoop();
 		}
@@ -42,11 +38,8 @@ APP.counter = (function(window, undefined) {
 	 */
 	function start() {
 		
-		/*
-		 * don't start a second counter ...
-		 */
+		//don't start a second counter
 		if( is_counting ) return;
-		
 		is_counting = true;
 		
 		timeInterval = window.setInterval(increase, 1000);
@@ -60,9 +53,9 @@ APP.counter = (function(window, undefined) {
 
 		var	minutes = Math.floor( currentLoopTime / 60 ),
 			seconds = currentLoopTime - (minutes*60),
-			totalLoopTime = currentLoopTime + personalLoopTime,
-			personalMinutes,
-			personalSeconds;
+			totalLoopTime = currentLoopTime + storageLoopTime,
+			storageMinutes,
+			storageSeconds;
 			
 		if( minutes < 10) minutes = "0" + minutes;
 		if( seconds < 10) seconds = "0" + seconds;
@@ -71,15 +64,15 @@ APP.counter = (function(window, undefined) {
 		
 		$current.html( minutes + ':' + seconds );
 		
-		if( personalLoopTime ) {
+		if( storageLoopTime ) {
 			
-			personalMinutes = Math.floor( totalLoopTime / 60 );
-			personalSeconds = totalLoopTime - (personalMinutes*60);
+			storageMinutes = Math.floor( totalLoopTime / 60 );
+			storageSeconds = totalLoopTime - (storageMinutes*60);
 			
-			if( personalMinutes < 10) personalMinutes = "0" + personalMinutes;
-			if( personalSeconds < 10) personalSeconds = "0" + personalSeconds;
+			if( storageMinutes < 10) storageMinutes = "0" + storageMinutes;
+			if( storageSeconds < 10) storageSeconds = "0" + storageSeconds;
 			
-			$storage.html( personalMinutes + ':' + personalSeconds );
+			$storage.html( storageMinutes + ':' + storageSeconds );
 		}
 		
 		//save loop time
@@ -107,7 +100,7 @@ APP.counter = (function(window, undefined) {
 		window.clearInterval( timeInterval );
 		is_counting = false;
 		
-		personalLoopTime = 0;
+		storageLoopTime = 0;
 		currentLoopTime	= 0;
 		
 		$current.html( '00:00' );
@@ -118,7 +111,7 @@ APP.counter = (function(window, undefined) {
 	
 
 	/*
-	 * show personal loop
+	 * show storage loop
 	 */
 	function showStorageLoop() {
 		$storage
@@ -129,7 +122,7 @@ APP.counter = (function(window, undefined) {
 	
 
 	/*
-	 * hide personal loop
+	 * hide storage loop
 	 */
 	function hideStorageLoop() {
 		$storage
