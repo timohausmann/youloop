@@ -4,7 +4,7 @@
 	}
 	
 	$url = $_GET['url'];
-	$data = getYouloopData($url);
+	$data = getYouloopData( $url );
 	
 	echo json_encode( $data );
 

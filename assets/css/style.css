@@ -375,7 +375,8 @@ body {
 
 .btn__hidden {
   opacity: 0;
-  left: -40px;
+  -webkit-transform: translateX(-40px);
+  transform: translateX(-40px);
 }
 
 .btn__loop {
@@ -517,6 +518,7 @@ body {
 }
 
 .form--input {
+  position: relative;
   display: block;
   color: #646464;
   border: 0;
@@ -524,8 +526,6 @@ body {
   line-height: 60px;
   padding: 0 10px;
   width: 400px;
-  position: relative;
-  top: 0;
   outline: 0;
   border-radius: 0 30px 30px 0;
   -webkit-transition: 0.5s ease-out;
@@ -537,7 +537,8 @@ body {
  */
 
 .form__play .form--input {
-  top: -55px;
+  -webkit-transform: translateY(-55px);
+  transform: translateY(-55px);
 }
 
 .form__play .form--caption {
@@ -546,10 +547,10 @@ body {
 }
 
 .form--error {
-  color: #666666;
   position: absolute;
   left: 110px;
   top: 26px;
+  color: #666;
   -webkit-animation: flyingError 1s ease-out 1;
   animation: flyingError 1s ease-out 1;
 }
@@ -557,24 +558,28 @@ body {
 @-webkit-keyframes flyingError {
   0% {
     opacity: 1;
-    top: 26px;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
   }
 
   100% {
     opacity: 0;
-    top: -20px;
+    -webkit-transform: translateX(-50px);
+    transform: translateX(-50px);
   }
 }
 
 @keyframes flyingError {
   0% {
     opacity: 1;
-    top: 26px;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
   }
 
   100% {
     opacity: 0;
-    top: -20px;
+    -webkit-transform: translateX(-50px);
+    transform: translateX(-50px);
   }
 }
 
@@ -638,7 +643,8 @@ body {
 
 .videoinfo--caption__hidden {
   opacity: 0;
-  left: -30px;
+  -webkit-transform: translateX(-30px);
+  transform: translateX(-30px);
 }
 
 .videoinfo--caption__play {
@@ -647,7 +653,7 @@ body {
 }
 
 /*
- * Current
+ * Current Video Info
  */
 
 .videoinfo__current.videoinfo__open {
@@ -655,7 +661,7 @@ body {
 }
 
 /*
- * Preview
+ * Preview Video Info
  */
 
 .videoinfo__preview.videoinfo__open {
@@ -663,11 +669,11 @@ body {
   margin-bottom: -100px;
 }
 
+/*
+ * Preview Video Info While Playing
+ */
+
 .videoinfo__preview.videoinfo__open.videoinfo__play {
   height: 155px;
   margin-bottom: -45px;
-}
-
-.videoinfo__preview.videoinfo__play .disc {
-  top: 155px;
 }

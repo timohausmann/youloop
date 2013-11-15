@@ -19,7 +19,7 @@
 
 .btn__hidden {
 	opacity: 0;
-	left: -40px;
+	transform: translateX(-40px);
 }
 
 .btn__loop {

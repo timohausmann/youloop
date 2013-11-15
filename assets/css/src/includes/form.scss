@@ -22,6 +22,7 @@
 }
 
 .form--input {
+	position: relative;
 	display: block;
 	color: #646464;
 	border: 0;
@@ -29,8 +30,6 @@
 	line-height: 60px;
 	padding: 0 10px;
 	width: 400px;
-	position: relative;
-	top: 0;
 	outline: 0;
 	border-radius: 0 30px 30px 0;
 
@@ -46,7 +45,7 @@
 .form__play {
 
 	.form--input {
-		top: -55px;
+		transform: translateY(-55px);
 	}
 
 	.form--caption {
@@ -57,10 +56,10 @@
 
 
 .form--error {
-	color: #666666;
 	position: absolute;
 	left: 110px;
 	top: 26px;
+	color: #666;
 	
 	animation: flyingError 1s ease-out 1;
 
@@ -71,10 +70,10 @@
 @keyframes flyingError {
 	0% {
 		opacity: 1;
-		top: 26px;
+		transform: translateX(0);
 	}
 	100% {
 		opacity: 0;
-		top: -20px;
+		transform: translateX(-50px);
 	}
 }

@@ -29,7 +29,7 @@
 
 .videoinfo--caption__hidden {
 	opacity: 0;
-	left: -30px;
+	transform: translateX(-30px);
 }
 
 .videoinfo--caption__play {
@@ -39,7 +39,7 @@
 
 
 /*
- * Current
+ * Current Video Info
  */
 .videoinfo__current.videoinfo__open {
 	height: 60px;
@@ -47,17 +47,17 @@
 
 
 /*
- * Preview
+ * Preview Video Info
  */
 .videoinfo__preview.videoinfo__open {
 	height: 210px;
 	margin-bottom: -100px;
 }
 
+/*
+ * Preview Video Info While Playing
+ */
 .videoinfo__preview.videoinfo__open.videoinfo__play {
 	height: 155px;
 	margin-bottom: -45px;
 }
-.videoinfo__preview.videoinfo__play .disc {
-	top: 155px;
-} 
