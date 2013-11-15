@@ -2,28 +2,30 @@
  * @subsection btn
  */
 .btn {
-	position:relative;
-	/*opacity:0;
-	left:-40px;*/
-	
-	background:0;
-	border:0;
-	color:#0cf;
-	text-decoration:underline;
-	padding-left:32px;
-	line-height:27px;
-	background:url(../img/sprite.png) no-repeat;
+	position: relative;
+	background: 0;
+	border: 0;
+	color: #0cf;
+	text-decoration: underline;
+	padding-left: 32px;
+	line-height: 27px;
+	background: url(../img/sprite.png) no-repeat;
 
-	transition:0.5s ease-out;
+	transition: 0.5s ease-out;
 
 	@extend .cursive;
 	@extend .large;
+}
+
+.btn__hidden {
+	opacity: 0;
+	left: -40px;
 }
 
 .btn__loop {
 	background-position: 0 0;
 }
 .btn__cancel {
-	color:#333;
+	color: #333;
 	background-position: 0 -30px;
 }

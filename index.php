@@ -72,16 +72,16 @@
 		
 		<div class="videoinfo videoinfo__preview" id="videoinfo_preview">
 
-			<div class="disc">
+			<div class="disc disc__hidden">
 				<div class="disc--mask">
 					<img class="disc--image" src="http://i2.ytimg.com/vi/miRXrfaQrOs/1.jpg" />
 				</div>
 			</div>
 
-			<h1 class="videoinfo--caption"></h1>
+			<h1 class="videoinfo--caption videoinfo--caption__hidden"></h1>
 
-			<button class="btn btn__loop" id="btn_start">loop</button>
-			<button class="btn btn__cancel" id="btn_cancel">cancel</button>
+			<button class="btn btn__hidden btn__loop" id="btn_start">loop</button>
+			<button class="btn btn__hidden btn__cancel" id="btn_cancel">cancel</button>
 
 		</div>
 		

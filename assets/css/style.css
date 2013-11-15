@@ -362,8 +362,6 @@ body {
 
 .btn {
   position: relative;
-  /*opacity:0;
-  left:-40px;*/
   background: 0;
   border: 0;
   color: #0cf;
@@ -373,6 +371,11 @@ body {
   background: url(../img/sprite.png) no-repeat;
   -webkit-transition: 0.5s ease-out;
   transition: 0.5s ease-out;
+}
+
+.btn__hidden {
+  opacity: 0;
+  left: -40px;
 }
 
 .btn__loop {
@@ -425,10 +428,8 @@ body {
   position: relative;
   float: left;
   margin-right: 10px;
-  -webkit-transform: rotate(-270deg);
-  transform: rotate(-270deg);
-  -webkit-transition: 0.5s ease-out;
-  transition: 0.5s ease-out;
+  -webkit-transition: 1s ease-out;
+  transition: 1s ease-out;
 }
 
 .disc::after {
@@ -440,6 +441,11 @@ body {
   left: 38px;
   top: 38px;
   background: #000;
+}
+
+.disc__hidden {
+  -webkit-transform: translateY(210px) rotate(-270deg);
+  transform: translateY(210px) rotate(-270deg);
 }
 
 .disc__play {
@@ -621,15 +627,18 @@ body {
 
 .videoinfo--caption {
   position: relative;
-  /*opacity:0;
-  left:-30px;*/
   padding-top: 33px;
   padding-bottom: 5px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
+  -webkit-transition: 0.5s ease-out;
+  transition: 0.5s ease-out;
+}
+
+.videoinfo--caption__hidden {
+  opacity: 0;
+  left: -30px;
 }
 
 .videoinfo--caption__play {
