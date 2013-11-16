@@ -12,9 +12,7 @@
 					   \/__/
 -->
 
-<!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<html lang="de">
 <head>
 	
 	<title>YouTube Dauerschleife Video Loop - endlos wiederholen :: youloop</title>
@@ -103,6 +101,7 @@
 	<script src="assets/js/app/videoinfo.js"></script>
 	<script src="assets/js/app/player.js"></script>
 	<script src="assets/js/app/counter.js"></script>
+	<script src="assets/js/app/load.js"></script>
 	
 	<!--script src="assets/js/script.min.js"></script-->
 </body>

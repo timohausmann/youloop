@@ -1,6 +1,6 @@
 var APP = APP || {};
 
-APP.form = (function(window, undefined) {
+APP.form = (function(window, $, undefined) {
 	
 	var 	$form 		= $('#form'),
 		$input 		= $('#form_input'),
@@ -9,18 +9,10 @@ APP.form = (function(window, undefined) {
 
 		/*
 		 * @var previewData 
-		 * @var videoData
 		 * holding data for preview & current video
-		 * keys: id, title, image, related
+		 * keys: id, title, image
 		 */
 		previewData,
-		videoData,
-		
-		/*
-		 * @var is_player_visible
-		 * true, if player is visible
-		 */
-		is_player_visible,
 		
 		/*
 		 * @var inputTimeout
@@ -35,32 +27,23 @@ APP.form = (function(window, undefined) {
 	 */
 	function init() {
 		
-		/*
-		 * bind events for input field
-		 */
+		//bind events for input field
 		$input
 			.on('keyup', handleKeyup)
 			.on('click', handleClick);
 		       
-		/*
-		 * button loop
-		 */
+		//button loop
 		$loopStart
 			.on('click', handleStart);
 		
-		/*
-		 * button cancel
-		 */
+		//button cancel
 		$loopCancel
 			.on('click', handleCancel);   
 			
-			
-		/*
-		 * dev
-		 */
-		$input
+		//dev
+		/*$input
 			.val('http://www.youtube.com/watch?feature=endscreen&NR=1&v=R8MWKsheHxk')
-			.trigger('keyup');
+			.trigger('keyup');*/
 				
 	}
 	
@@ -96,59 +79,7 @@ APP.form = (function(window, undefined) {
 	 */
 	function handleStart() {
 		
-		/*
-		 * a new loop will be done,
-		 * so assign the previewData as videoData
-		 */
-		videoData = previewData;
-		
-		APP.videoinfo.createCurrent( videoData );
-		
-		APP.videoinfo.closePreview();
-		
-		/*
-		 * init the counter
-		 */
-		APP.counter.reset();
-		APP.counter.init( videoData.id );
-		
-		if( !is_player_visible ) {
-			
-			/*
-			 * set classes to show the player
-			 */
-			$('#videoinfo_current').addClass('videoinfo__open');
-			
-			$('#videoinfo_preview').addClass('videoinfo__play');
-
-			$('#intro').addClass('intro__closed');
-			
-			$('#player').addClass('player__open');
-
-			$('#player_inner').addClass('player--inner__open');
-				
-			$('#form').addClass('form__play');
-				
-			/*
-			 * after 500ms, all animations are done
-			 * init the player
-			 */
-			window.setTimeout(function() {
-				APP.player.load( videoData.id );
-			}, 500);
-			
-			is_player_visible = true;
-			
-		} else {
-			
-			/*
-			 * if the player is already visible,
-			 * load the new video instant
-			 */
-			APP.player.load( videoData.id );
-		}
-		
-		
+		APP.player.load( previewData );
 	}
 
 
@@ -205,15 +136,12 @@ APP.form = (function(window, undefined) {
 	 */
 	function processAjax( data ) {
 
-		//console.log( data );
-		
 		if(data.status === "ok") {
 			
 			previewData = {
 				id : data.id,
 				title : data.data.title,
-				image : data.data.image,
-				related : data.data.related
+				image : data.data.image
 			};
 			
 			APP.videoinfo.createPreview( previewData );
@@ -229,7 +157,8 @@ APP.form = (function(window, undefined) {
 	
 	       
 	return {
-		init : init
+		init: init,
+		createFormError: createFormError
 	};
 	
-})(window);
+})(window, jQuery);

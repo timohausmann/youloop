@@ -625,7 +625,6 @@ body {
   height: 0;
   margin-bottom: 0;
   overflow: hidden;
-  cursor: pointer;
   -webkit-transition: 0.5s ease-out;
   transition: 0.5s ease-out;
 }

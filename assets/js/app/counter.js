@@ -1,6 +1,6 @@
 var APP = APP || {};
 
-APP.counter = (function(window, undefined) {
+APP.counter = (function(window, $, undefined) {
 	
 	var	$current		= $('#counter_current'),
 	    	$storage		= $('#counter_storage'),
@@ -139,4 +139,4 @@ APP.counter = (function(window, undefined) {
 		reset : reset
 	};
 	
-})(window);
+})(window, jQuery);

@@ -1,27 +1,22 @@
 var APP = APP || {};
 
-APP.videoinfo = (function(window, undefined) {
+APP.videoinfo = (function(window, $, undefined) {
 	
 	var 	$current 	= $('#videoinfo_current'),
 		$preview 	= $('#videoinfo_preview');
 
 
+	/*
+	 * init
+	 */
 	function init() {
 
 	}
 
 
 	/*
-	 * update the video info shown above the video
+	 * createPreview
 	 */
-	/*function updateVideoInfo() {
-		
-		$videoInfo
-			.find('.videoTitle').html( videoData.title )
-			.end()
-			.find('.videoImage').attr('src', videoData.image );
-	}*/
-
 	function createPreview( videodata ) {
 		create( $preview, videodata );
 
@@ -38,10 +33,14 @@ APP.videoinfo = (function(window, undefined) {
 			
 	}
 
+	/*
+	 * createCurrent
+	 */
 	function createCurrent( videodata ) {
 		create( $current, videodata );
 	}
 	
+
 	/*
 	 * open the video preview and update values
 	 */
@@ -51,13 +50,10 @@ APP.videoinfo = (function(window, undefined) {
 			.addClass('videoinfo__open')
 			.find('.videoinfo--caption').html( videodata.title )
 			.end()
-			
 			.find('.disc--image').attr('src', videodata.image );
 	}
 
 
-
-	
 	/*
 	 * close the video preview
 	 */
@@ -80,4 +76,4 @@ APP.videoinfo = (function(window, undefined) {
 		closePreview : closePreview
 	};
 	
-})(window);
+})(window, jQuery);

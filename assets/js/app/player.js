@@ -1,32 +1,66 @@
 var APP = APP || {};
 
-APP.player = (function(window, undefined) {
+APP.player = (function(window, $, undefined) {
 
 	var 	$player = $('#player'),
 		yt_dom_id = 'player_media',
-		videoData;
+
+		/*
+		 * @var is_player_visible
+		 * true, if player is visible
+		 */
+		is_player_visible;
 
 
 
-
+	/*
+	 * init
+	 */
 	function init() {
 
 	}
 
 
+	/*
+	 * load
+	 */
+	function load( videoData ) {
 
+		APP.videoinfo.createCurrent( videoData );
+		
+		APP.videoinfo.closePreview();
+		
+		//init the counter
+		APP.counter.reset();
+		APP.counter.init( videoData.id );
+
+		//update URL
+		history.pushState({}, '', '?v=' + videoData.id);
+		
+		if( !is_player_visible ) {
+
+			is_player_visible = true;
+
+			//set classes to show the player
+			$('#videoinfo_current').addClass('videoinfo__open');
+			$('#videoinfo_preview').addClass('videoinfo__play');
+			$('#intro').addClass('intro__closed');
+			$('#player').addClass('player__open');
+			$('#player_inner').addClass('player--inner__open');
+			$('#form').addClass('form__play');
+		} 
+
+		create( videoData.id );
+	}
 
 
 	/*
 	 * create a new youtube player and insert it into the dom
 	 * @param String video_id	The youtube video id
 	 */
-	function load( video_id ) {
+	function create( video_id ) {
 		
-		if( typeof video_id === 'undefined' ) {
-			console.log('no video id');
-			return;
-		}
+		if( typeof video_id === 'undefined' ) return;
 		
 		var	urlParams = {
 				enablejsapi : 1,
@@ -59,13 +93,7 @@ APP.player = (function(window, undefined) {
 	 * EventListener for YouTube API : play
 	 */
 	function onVideoPlay() {
-
-		console.log('onVideoPlay', $('#videoinfo_current').find('.disc') );
 		
-		/*$playerWrap
-			.removeClass('pause')
-			.addClass('play');*/
-
 		$('#videoinfo_current')
 			.find('.disc')
 			.removeClass('disc__pause')
@@ -79,9 +107,6 @@ APP.player = (function(window, undefined) {
 	 * EventListener for YouTube API : pause
 	 */
 	function onVideoPause() {
-
-		/*$playerWrap
-			.addClass('pause');*/
 
 		$('#videoinfo_current')
 			.find('.disc')
@@ -98,22 +123,8 @@ APP.player = (function(window, undefined) {
 	}
 	
 	
-	function getVideoData() {
-		return videoData;
-	}
-	
-	function setVideoData( value ) {
-		videoData = value;
-	}
-
-
-
-
-
-
-
 	/*
-	 * YouTube API Functions
+	 * YouTube API onYouTubePlayerReady
 	 */
 	window.onYouTubePlayerReady = function(playerId) {
 		var player = document.getElementById(yt_dom_id);
@@ -121,6 +132,9 @@ APP.player = (function(window, undefined) {
 	}
 
 
+	/*
+	 * YouTube API onPlayerStateChange
+	 */
 	window.onPlayerStateChange = function(state) {
 		
 		var trace;
@@ -152,29 +166,14 @@ APP.player = (function(window, undefined) {
 		}
 		console.log(trace);	
 	}
-
-
-
-
-
 	
 	       
 	return {
 		init : init,
+		load : load,
 		onVideoPlay : onVideoPlay,
 		onVideoPause : onVideoPause,
-		onVideoEnd : onVideoEnd,
-		
-		load : load,
-		
-		getVideoData : getVideoData,
-		setVideoData : setVideoData
+		onVideoEnd : onVideoEnd
 	};
 	
-})(window);
-
-
-
-
-
-
+})(window, jQuery);
