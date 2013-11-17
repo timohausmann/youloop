@@ -331,11 +331,11 @@ body {
   color: #999;
 }
 
-.like {
+.footer--like {
   float: right;
   border: 0;
   overflow: hidden;
-  width: 140px;
+  width: 115px;
   height: 21px;
 }
 
@@ -578,7 +578,9 @@ body {
 
 .form--error {
   position: absolute;
-  left: 110px;
+  left: 0;
+  width: 400px;
+  text-align: center;
   top: 26px;
   color: #666;
   -webkit-animation: flyingError 1s ease-out 1;
@@ -588,28 +590,28 @@ body {
 @-webkit-keyframes flyingError {
   0% {
     opacity: 1;
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
   }
 
   100% {
     opacity: 0;
-    -webkit-transform: translateX(-50px);
-    transform: translateX(-50px);
+    -webkit-transform: translateY(-50px);
+    transform: translateY(-50px);
   }
 }
 
 @keyframes flyingError {
   0% {
     opacity: 1;
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
   }
 
   100% {
     opacity: 0;
-    -webkit-transform: translateX(-50px);
-    transform: translateX(-50px);
+    -webkit-transform: translateY(-50px);
+    transform: translateY(-50px);
   }
 }
 

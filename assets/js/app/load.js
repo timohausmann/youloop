@@ -7,7 +7,7 @@ APP.load = (function(window, $, undefined) {
 	 */
 	function init() {
 
-		var v = getUrlVars().v;
+		var v = getUrlVars().v || getUrlVars().id;
 
 		if( typeof v === 'undefined' ) return;
 

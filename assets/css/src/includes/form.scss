@@ -57,7 +57,9 @@
 
 .form--error {
 	position: absolute;
-	left: 110px;
+	left: 0;
+	width: 400px;
+	text-align: center;
 	top: 26px;
 	color: #666;
 	
@@ -70,10 +72,10 @@
 @keyframes flyingError {
 	0% {
 		opacity: 1;
-		transform: translateX(0);
+		transform: translateY(0);
 	}
 	100% {
 		opacity: 0;
-		transform: translateX(-50px);
+		transform: translateY(-50px);
 	}
 }

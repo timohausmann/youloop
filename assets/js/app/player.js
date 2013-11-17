@@ -65,12 +65,13 @@ APP.player = (function(window, $, undefined) {
 		if( typeof video_id === 'undefined' ) return;
 		
 		var	urlParams = {
-				enablejsapi : 1,
-				playerapiid : 'ytplayer',
-				fs : 1,
-				loop : 1,
-				autoplay : 1,
-				version : 3
+				enablejsapi: 1,
+				playerapiid: 'ytplayer',
+				fs: 1,
+				loop: 1,
+				autoplay: 1,
+				version: 3,
+				playlist: video_id
 			},
 			embedUrl = 'http://www.youtube.com/v/'+ video_id + '?',
 			params = { 

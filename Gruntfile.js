@@ -7,6 +7,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 
+	grunt.task.registerTask('build', ['sass:scss', 'autoprefixer:scss',  'cssmin:minify', 'uglify:scripts']);
+
 	grunt.initConfig({
 
 		watch : {
@@ -29,7 +31,7 @@ module.exports = function(grunt) {
 		uglify: {
 			scripts: {
 				files: {
-					'assets/js/scripts.min.js': [
+					'assets/js/script.min.js': [
 
 						'assets/js/libs/jquery-1.10.2.min.js',
 						'assets/js/app/main.js',

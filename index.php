@@ -1,15 +1,15 @@
 <!doctype html>
 
 <!--
-	just..	___                                                   
-	      /'___\                                                  
-	     /\ \__/  ___   _ __       __  __    ___   __  __         
-	     \ \ ,__\/ __`\/\`'__\    /\ \/\ \  / __`\/\ \/\ \        
-	      \ \ \_/\ \L\ \ \ \/     \ \ \_\ \/\ \L\ \ \ \_\ \__  __ 
-	       \ \_\\ \____/\ \_\      \/`____ \ \____/\ \____/\_\/\_\
-		\/_/ \/___/  \/_/       `/___/> \/___/  \/___/\/_/\/_/
-					   /\___/                     
-					   \/__/
+        just..	___                                                   
+              /'___\                                                  
+             /\ \__/  ___   _ __       __  __    ___   __  __         
+             \ \ ,__\/ __`\/\`'__\    /\ \/\ \  / __`\/\ \/\ \        
+              \ \ \_/\ \L\ \ \ \/     \ \ \_\ \/\ \L\ \ \ \_\ \__  __ 
+               \ \_\\ \____/\ \_\      \/`____ \ \____/\ \____/\_\/\_\
+                \/_/ \/___/  \/_/       `/___/> \/___/  \/___/\/_/\/_/
+                                           /\___/                     
+                                           \/__/
 -->
 
 <html lang="de">
@@ -24,14 +24,15 @@
 	<meta name="keywords" content="youtube, dauerschleife, wiederholen, endlos, loop, repeat, endless, tool, automatic, videos, video, music, audio, track, listen, mp3" />
 
 	<!-- facebook like -->
-	<meta property="og:type" content="website" />
 	<meta property='og:title' content='Youloop - Loop Youtube Videos!' />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="http://trashnet.de/youloop/" />
+	<meta property='og:image' content='http://trashnet.de/youloop/assets/img/youloop_facebook.png' />
 	<meta property='og:description' content='Mit Youloop kann man ganz einfach Youtube-Videos auf Dauerschleife abspielen!' />
 	<meta property="fb:admins" content="100000133883995" />
 
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-	<link rel="stylesheet" href="assets/css/style.css" />
-	<!--link rel="stylesheet" href="assets/css/style.min.css" /-->
+	<link rel="stylesheet" href="assets/css/style.min.css" />
 
 	<script src="assets/js/libs/modernizr.min.js"></script>
 </head>
@@ -51,7 +52,7 @@
 
 				<div class="disc">
 					<div class="disc--mask">
-						<img class="disc--image" src="http://i2.ytimg.com/vi/miRXrfaQrOs/1.jpg" alt="" />
+						<img class="disc--image" src="#" alt="" />
 					</div>
 				</div>
 
@@ -75,7 +76,7 @@
 
 			<div class="disc disc__hidden">
 				<div class="disc--mask">
-					<img class="disc--image" src="http://i2.ytimg.com/vi/miRXrfaQrOs/1.jpg" />
+					<img class="disc--image" src="#" />
 				</div>
 			</div>
 
@@ -97,7 +98,7 @@
 		<a class="footer--info" href="http://timohausmann.de/" target="_blank">Impressum</a>
 		<a class="footer--info" href="http://trashnet.de/youloop_one/" target="_blank">alte Version</a>
 
-		<iframe class="like" src="http://www.facebook.com/plugins/like.php?href=http://trashnet.de/youloop/&amp;layout=button_count&amp;show_faces=false&amp;width=140&amp;action=like&amp;font&amp;colorscheme=dark&amp;height=21" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+		<iframe class="footer--like" src="http://www.facebook.com/plugins/like.php?href=https://www.facebook.com/Youloop1&amp;layout=button_count&amp;show_faces=false&amp;width=140&amp;action=like&amp;font&amp;colorscheme=dark&amp;height=21" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
 	</footer>
 
 	<script src="http://www.google.com/jsapi"></script>
@@ -105,15 +106,6 @@
 		google.load("swfobject", "2.1");
 	</script>
 
-	<script src="assets/js/libs/jquery-1.10.2.min.js"></script>
-	<script src="assets/js/libs/modernizr.min.js"></script>
-	<script src="assets/js/app/main.js"></script>
-	<script src="assets/js/app/form.js"></script>
-	<script src="assets/js/app/videoinfo.js"></script>
-	<script src="assets/js/app/player.js"></script>
-	<script src="assets/js/app/counter.js"></script>
-	<script src="assets/js/app/load.js"></script>
-	
-	<!--script src="assets/js/script.min.js"></script-->
+	<script src="assets/js/script.min.js"></script>
 </body>
 </html>
