@@ -2,10 +2,10 @@ var APP = APP || {};
 
 APP.form = (function(window, $, undefined) {
 	
-	var 	$form 		= $('#form'),
-		$input 		= $('#form_input'),
-		$loopStart 	= $('#btn_start'),
-		$loopCancel 	= $('#btn_cancel'),
+	var	$form		= $('#form'),
+		$input		= $('#form_input'),
+		$loopStart	= $('#btn_start'),
+		$loopCancel	= $('#btn_cancel'),
 
 		/*
 		 * @var previewData 
@@ -19,8 +19,8 @@ APP.form = (function(window, $, undefined) {
 		 * timeout for triggering the ajax request
 		 */
 		inputTimeout;
-	     
-	     
+
+
 	/*
 	 * init the application
 	 * bind events
@@ -31,7 +31,7 @@ APP.form = (function(window, $, undefined) {
 		$input
 			.on('keyup', handleKeyup)
 			.on('click', handleClick);
-		       
+
 		//button loop
 		$loopStart
 			.on('click', handleStart);
@@ -116,7 +116,7 @@ APP.form = (function(window, $, undefined) {
 	 * post the input value to the ajax service
 	 */
 	function submitAjax() {
-		    
+
 		$.ajax({
 			url: 'ajax.php',
 			data: {
@@ -155,7 +155,7 @@ APP.form = (function(window, $, undefined) {
 		}
 	}
 	
-	       
+
 	return {
 		init: init,
 		createFormError: createFormError

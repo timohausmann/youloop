@@ -23,18 +23,21 @@
 	<meta name="description" content="Hier kannst du ganz einfach Youtube Videos in einer Endlosschleife abspielen" />
 	<meta name="keywords" content="youtube, dauerschleife, wiederholen, endlos, loop, repeat, endless, tool, automatic, videos, video, music, audio, track, listen, mp3" />
 
-	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-	<link rel="stylesheet" href="assets/css/style.css" />
-	
 	<!-- facebook like -->
 	<meta property="og:type" content="website" />
 	<meta property='og:title' content='Youloop - Loop Youtube Videos!' />
 	<meta property='og:description' content='Mit Youloop kann man ganz einfach Youtube-Videos auf Dauerschleife abspielen!' />
 	<meta property="fb:admins" content="100000133883995" />
+
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+	<link rel="stylesheet" href="assets/css/style.css" />
+	<!--link rel="stylesheet" href="assets/css/style.min.css" /-->
+
+	<script src="assets/js/libs/modernizr.min.js"></script>
 </head>
 <body>
 
-	<section class="page">
+	<div class="page">
 		<header class="header">
 			<img class="header--logo" src="assets/img/youloop_logo.png" alt="youloop logo" />
 			<h1 class="header--caption">youloop</h1>
@@ -68,7 +71,7 @@
 			</div>
 		</section>
 		
-		<div class="videoinfo videoinfo__preview" id="videoinfo_preview">
+		<section class="videoinfo videoinfo__preview" id="videoinfo_preview">
 
 			<div class="disc disc__hidden">
 				<div class="disc--mask">
@@ -81,21 +84,29 @@
 			<button class="btn btn__hidden btn__loop" id="btn_start">loop</button>
 			<button class="btn btn__hidden btn__cancel" id="btn_cancel">cancel</button>
 
-		</div>
+		</section>
 		
 		<form action="" method="post" class="form" id="form">
 			<label class="form--caption" for="form_input">Kopiere einfach die <dfn>Video-URL von YouTube</dfn> in dieses Feld:</label>
 			<input class="form--input" id="form_input" type="text" name="v" placeholder="http://youtube.com/watch?" />
 		</form>
-	</section>
+	</div>
 
-	<!--script src="assets/js/libs/jsapi.js"></script-->
+	<footer class="footer">
+		<span class="footer--info">&copy; <?php echo date('Y'); ?></span>
+		<a class="footer--info" href="http://timohausmann.de/" target="_blank">Impressum</a>
+		<a class="footer--info" href="http://trashnet.de/youloop_one/" target="_blank">alte Version</a>
+
+		<iframe class="like" src="http://www.facebook.com/plugins/like.php?href=http://trashnet.de/youloop/&amp;layout=button_count&amp;show_faces=false&amp;width=140&amp;action=like&amp;font&amp;colorscheme=dark&amp;height=21" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+	</footer>
+
 	<script src="http://www.google.com/jsapi"></script>
 	<script>
 		google.load("swfobject", "2.1");
 	</script>
 
 	<script src="assets/js/libs/jquery-1.10.2.min.js"></script>
+	<script src="assets/js/libs/modernizr.min.js"></script>
 	<script src="assets/js/app/main.js"></script>
 	<script src="assets/js/app/form.js"></script>
 	<script src="assets/js/app/videoinfo.js"></script>

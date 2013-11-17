@@ -2,8 +2,8 @@ var APP = APP || {};
 
 APP.videoinfo = (function(window, $, undefined) {
 	
-	var 	$current 	= $('#videoinfo_current'),
-		$preview 	= $('#videoinfo_preview');
+	var	$current	= $('#videoinfo_current'),
+		$preview	= $('#videoinfo_preview');
 
 
 	/*

@@ -2,7 +2,7 @@ var APP = APP || {};
 
 APP.player = (function(window, $, undefined) {
 
-	var 	$player = $('#player'),
+	var	$player = $('#player'),
 		yt_dom_id = 'player_media',
 
 		/*
@@ -35,7 +35,9 @@ APP.player = (function(window, $, undefined) {
 		APP.counter.init( videoData.id );
 
 		//update URL
-		history.pushState({}, '', '?v=' + videoData.id);
+		if( Modernizr.history ) {
+			history.pushState({}, '', '?v=' + videoData.id);
+		}
 		
 		if( !is_player_visible ) {
 
@@ -81,7 +83,7 @@ APP.player = (function(window, $, undefined) {
 			},	
 			flashvars = {};
 		
-		for( key in urlParams ) {
+		for( var key in urlParams ) {
 			embedUrl += key + '=' + urlParams[key] + '&';
 		}
 		
@@ -129,7 +131,7 @@ APP.player = (function(window, $, undefined) {
 	window.onYouTubePlayerReady = function(playerId) {
 		var player = document.getElementById(yt_dom_id);
 		player.addEventListener("onStateChange", "onPlayerStateChange");
-	}
+	};
 
 
 	/*
@@ -164,10 +166,10 @@ APP.player = (function(window, $, undefined) {
 			default:
 				trace = "unknown process";
 		}
-		console.log(trace);	
-	}
+		//console.log(trace);	
+	};
 	
-	       
+
 	return {
 		init : init,
 		load : load,

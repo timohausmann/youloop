@@ -2,14 +2,12 @@ var APP = APP || {};
 
 APP.load = (function(window, $, undefined) {
 
-	var 	v;
-
 	/*
 	 * init
 	 */
 	function init() {
 
-		v = getUrlVars()['v'];
+		var v = getUrlVars().v;
 
 		if( typeof v === 'undefined' ) return;
 
@@ -52,15 +50,15 @@ APP.load = (function(window, $, undefined) {
 	 */
 	function getUrlVars() {
 
-		var 	vars 	= {},
-			parts 	= window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+		var	vars	= {},
+			parts	= window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
 					vars[key] = value;
 				});
 
 		return vars;
 	}
 
-	       
+
 	return {
 		init : init
 	};

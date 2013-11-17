@@ -6,7 +6,6 @@ body {
 	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 	font-size: 18px;
 	line-height: 2em;
-	text-align: center;
 }
 
 .page {
@@ -36,4 +35,33 @@ body {
 
 .large {
 	font-size: 20px;
+}
+
+/*
+ * @subsection Footer
+ */	
+.footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	padding: 10px;
+	background: rgba(0,0,0,0.25);
+	box-sizing: border-box;
+}
+
+.footer--info {
+	float: left;
+	margin-right: 20px;
+	font-size: 12px;
+	line-height: 21px;
+	color: #999;
+}
+
+.like {
+	float: right;
+	border: 0; 
+	overflow: hidden; 
+	width: 140px; 
+	height: 21px;
 }
