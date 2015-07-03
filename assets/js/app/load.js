@@ -30,15 +30,15 @@ APP.load = (function(window, $, undefined) {
 			
 			APP.player.load({
 				id : data.id,
-				title : data.data.title,
-				image : data.data.image
+				title : data.title,
+				image : data.image
 			});
 			
 		} else if(data.status === "no_id") {
 			APP.form.createFormError( 'keine Video ID gefunden' );
 			
-		} else if(data.status === "invalid_id") {
-			APP.form.createFormError( 'ungültige Video ID' );
+		} else if(data.status === "no_data") {
+			APP.form.createFormError( 'Video nicht gefunden' );
 			
 		}
 

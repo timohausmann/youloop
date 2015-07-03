@@ -140,17 +140,17 @@ APP.form = (function(window, $, undefined) {
 			
 			previewData = {
 				id : data.id,
-				title : data.data.title,
-				image : data.data.image
+				title : data.title,
+				image : data.image
 			};
 			
 			APP.videoinfo.createPreview( previewData );
 			
 		} else if(data.status === "no_id") {
-			createFormError( 'keine Video ID gefunden' );
+			APP.form.createFormError( 'keine Video ID gefunden' );
 			
-		} else if(data.status === "invalid_id") {
-			createFormError( 'ungültige Video ID' );
+		} else if(data.status === "no_data") {
+			APP.form.createFormError( 'Video nicht gefunden' );
 			
 		}
 	}
