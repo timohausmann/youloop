@@ -70,8 +70,7 @@ APP.player = (function(window, $, undefined) {
 				fs: 1,
 				loop: 1,
 				autoplay: 1,
-				version: 3,
-				playlist: video_id
+				version: 3
 			},
 			embedUrl = 'http://www.youtube.com/v/'+ video_id + '?',
 			params = { 
@@ -114,7 +113,7 @@ APP.player = (function(window, $, undefined) {
 		$('#videoinfo_current')
 			.find('.disc')
 			.addClass('disc__pause');
-		
+
 		APP.counter.stop();
 	}
 	
@@ -123,6 +122,8 @@ APP.player = (function(window, $, undefined) {
 	 * EventListener for YouTube API : end
 	 */
 	function onVideoEnd() {
+		var ytplayer = document.getElementById("player_media");
+		ytplayer.playVideo();
 	}
 	
 	
@@ -167,7 +168,7 @@ APP.player = (function(window, $, undefined) {
 			default:
 				trace = "unknown process";
 		}
-		//console.log(trace);	
+		console.log(trace);	
 	};
 	
 

@@ -106,6 +106,13 @@
 		google.load("swfobject", "2.1");
 	</script>
 
-	<script src="assets/js/script.min.js"></script>
+	<script src='assets/js/libs/jquery-1.10.2.min.js'></script>
+	<script src='assets/js/app/main.js'></script>
+	<script src='assets/js/app/form.js'></script>
+	<script src='assets/js/app/videoinfo.js'></script>
+	<script src='assets/js/app/player.js'></script>
+	<script src='assets/js/app/counter.js'></script>
+	<script src='assets/js/app/load.js'></script>
+	
 </body>
 </html>
