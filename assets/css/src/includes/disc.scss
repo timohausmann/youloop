@@ -37,10 +37,14 @@
 	height: 90px;
 	overflow: hidden;
 	border-radius: 45px;
+	position: relative;
 }
 	
 .disc--image {
 	height: 90px;
+	position: absolute;
+	left: 50%;
+	margin-left: -80px;
 }
 
 @keyframes spinningDisc {
