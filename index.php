@@ -94,28 +94,7 @@
 
 	<!--/div>
 	<div class="page page--bottom"-->
-		<div class="recent">
-			<div class="disc disc__link">
-				<div class="disc--mask disc--mask__border" 
-				style="background-image:url(https://i.ytimg.com/vi/dCI6v-i3qq4/mqdefault.jpg);"></div>
-				<div class="disc--title">Zero Cult - Liberation (180 mins)</div>
-			</div>
-			<div class="disc disc__link">
-				<div class="disc--mask disc--mask__border" 
-				style="background-image:url(https://i.ytimg.com/vi/dCI6v-i3qq4/mqdefault.jpg);"></div>
-				<div class="disc--title">Yo Mama - Whats up Mama (55 mins)</div>
-			</div>
-			<div class="disc disc__link">
-				<div class="disc--mask disc--mask__border" 
-				style="background-image:url(https://i.ytimg.com/vi/dCI6v-i3qq4/mqdefault.jpg);"></div>
-				<div class="disc--title">Pepe Deluxe² (18 mins)</div>
-			</div>
-			<div class="disc disc__link">
-				<div class="disc--mask disc--mask__border" 
-				style="background-image:url(https://i.ytimg.com/vi/dCI6v-i3qq4/mqdefault.jpg);"></div>
-				<div class="disc--title">Zero - Zero Mama (11 mins)</div>
-			</div>
-		<div>
+		<div class="recent" id="list"></div>
 	</div>
 
 	<footer class="footer">
@@ -135,6 +114,7 @@
 	<script src='assets/js/app/videoinfo.js'></script>
 	<script src='assets/js/app/player.js'></script>
 	<script src='assets/js/app/counter.js'></script>
+	<script src='assets/js/app/list.js'></script>
 	<script src='assets/js/app/load.js'></script>
 	
 </body>

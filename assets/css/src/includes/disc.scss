@@ -66,37 +66,43 @@
 
 		.disc--mask__border {
 			transform: rotate(0deg);
+			border-color: #ccc;
 		}
+	}
+
+	&::after {
+		border: 1px solid rgba(255,255,255,0.1);
 	}
 }
 
 .disc--mask__border {
 	transform: rotate(15deg);
 	transition: 0.3s;
-	border: 1px solid rgba(255,255,255,0.1);
+	border: 2px solid #333;
 }
 
 .disc--title {
 	position: absolute;
 	font-size: 12px;
 	font-weight: bold;
+	font-style: italic;
 	letter-spacing: 0.75px;
 	text-transform: uppercase;
 	white-space: nowrap;
 	line-height: 1rem;
-	left: 0%;
+	left: 50%;
 	bottom: 102px;
 	//width: 120px;
 
 	transition: 0.4s;
-	transform:   translateY(16px) rotate(-0);
+	transform: translateX(-50%) translateY(16px);
 	transform-origin: bottom left;
 	//transform: rotate(-45deg);
 	opacity: 0;
 }
 
 .disc:hover .disc--title {
-	transform: translateY(0)  rotate(-0);
+	transform: translateX(-50%) translateY(0);
 	transform-origin: bottom left;
 	opacity: 1;
 }

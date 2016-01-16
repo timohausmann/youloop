@@ -26,17 +26,35 @@ APP.player = (function(window, $, undefined) {
 	 */
 	function load( videoData ) {
 
+		var ytid = videoData.id;
+
 		APP.videoinfo.createCurrent( videoData );
 		
 		APP.videoinfo.closePreview();
 		
 		//init the counter
 		APP.counter.reset();
-		APP.counter.init( videoData.id );
+		APP.counter.init( ytid );
 
 		//update URL
 		if( Modernizr.history ) {
-			history.pushState({}, '', '?v=' + videoData.id);
+			history.pushState({}, '', '?v=' + ytid);
+		}
+
+		//add to list
+		if( Modernizr.localstorage) {
+
+			var $list = $('#list'),
+				$item = $list.find('[data-ytid="'+ ytid +'"]');
+
+			if( !$item.length ) {
+				APP.list.add(videoData);
+			} else {
+
+				$item
+					.detach()
+					.appendTo( $list );
+			}
 		}
 		
 		if( !is_player_visible ) {
@@ -52,7 +70,7 @@ APP.player = (function(window, $, undefined) {
 			$('#form').addClass('form__play');
 		} 
 
-		create( videoData.id );
+		create( ytid );
 	}
 
 
@@ -175,6 +193,7 @@ APP.player = (function(window, $, undefined) {
 	return {
 		init : init,
 		load : load,
+		create: create,
 		onVideoPlay : onVideoPlay,
 		onVideoPause : onVideoPause,
 		onVideoEnd : onVideoEnd

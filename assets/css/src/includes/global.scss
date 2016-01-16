@@ -16,7 +16,7 @@ body {
 .page--bottom {
 	position: absolute;
 	left: 0;
-	bottom: 64px;
+	bottom: 16px;
 	margin-left: 25%;
 }
 	
@@ -49,9 +49,9 @@ body {
 .footer {
 	text-align: right;
 	position: fixed;
-	left: 0;
+	right: 0;
 	bottom: 0;
-	width: 100%;
+	min-width: 25%;
 	padding: 10px;
 	//padding-left: 25%;
 	box-sizing: border-box;

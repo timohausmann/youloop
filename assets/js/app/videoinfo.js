@@ -46,6 +46,9 @@ APP.videoinfo = (function(window, $, undefined) {
 	 */
 	function create( $container, videodata ) {
 
+		if( !videodata.image ) 
+			videodata.image = 'https://i.ytimg.com/vi/' + videodata.id + '/mqdefault.jpg';
+
 		$container
 			.addClass('videoinfo__open')
 			.find('.videoinfo--caption').html( videodata.title )
