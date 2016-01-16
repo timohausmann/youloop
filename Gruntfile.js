@@ -39,6 +39,7 @@ module.exports = function(grunt) {
 						'assets/js/app/videoinfo.js',
 						'assets/js/app/player.js',
 						'assets/js/app/counter.js',
+						'assets/js/app/list.js',
 						'assets/js/app/load.js'
 					]
 				}
