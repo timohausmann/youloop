@@ -38,6 +38,8 @@
 	overflow: hidden;
 	border-radius: 45px;
 	position: relative;
+	background-size: cover;
+	background-position: center;
 }
 	
 .disc--image {
@@ -46,6 +48,59 @@
 	left: 50%;
 	margin-left: -80px;
 }
+
+
+
+
+
+
+
+
+.disc__link {
+	cursor: pointer;
+	transition: 0.3s;
+	margin-right: -45px;
+
+	&:hover {
+		margin-right: 10px;
+
+		.disc--mask__border {
+			transform: rotate(0deg);
+		}
+	}
+}
+
+.disc--mask__border {
+	transform: rotate(15deg);
+	transition: 0.3s;
+	border: 1px solid rgba(255,255,255,0.1);
+}
+
+.disc--title {
+	position: absolute;
+	font-size: 12px;
+	font-weight: bold;
+	letter-spacing: 0.75px;
+	text-transform: uppercase;
+	white-space: nowrap;
+	line-height: 1rem;
+	left: 0%;
+	bottom: 102px;
+	//width: 120px;
+
+	transition: 0.4s;
+	transform:   translateY(16px) rotate(-0);
+	transform-origin: bottom left;
+	//transform: rotate(-45deg);
+	opacity: 0;
+}
+
+.disc:hover .disc--title {
+	transform: translateY(0)  rotate(-0);
+	transform-origin: bottom left;
+	opacity: 1;
+}
+
 
 @keyframes spinningDisc {
 	0% {

@@ -13,6 +13,12 @@ body {
 	margin: 60px 0 0 25%;
 	padding-bottom: 50px;
 }
+.page--bottom {
+	position: absolute;
+	left: 0;
+	bottom: 64px;
+	margin-left: 25%;
+}
 	
 /*
  * @subsection Base Elements
@@ -41,18 +47,18 @@ body {
  * @subsection Footer
  */	
 .footer {
+	text-align: right;
 	position: fixed;
 	left: 0;
 	bottom: 0;
 	width: 100%;
 	padding: 10px;
-	background: rgba(0,0,0,0.75);
+	//padding-left: 25%;
 	box-sizing: border-box;
 	z-index: 10;
 }
 
 .footer--info {
-	float: left;
 	margin-right: 20px;
 	font-size: 12px;
 	line-height: 21px;
@@ -60,9 +66,11 @@ body {
 }
 
 .footer--like {
-	float: right;
 	border: 0; 
 	overflow: hidden; 
 	width: 115px; 
 	height: 21px;
+	display: inline-block;
+    position: relative;
+    top: 7px;
 }

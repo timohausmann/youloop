@@ -32,7 +32,7 @@
 	<meta property="fb:admins" content="100000133883995" />
 
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-	<link rel="stylesheet" href="assets/css/style.min.css" />
+	<link rel="stylesheet" href="assets/css/style.css" />
 
 	<script src="assets/js/libs/modernizr.min.js"></script>
 </head>
@@ -91,13 +91,36 @@
 			<label class="form--caption" for="form_input">Kopiere einfach die <dfn>Video-URL von YouTube</dfn> in dieses Feld:</label>
 			<input class="form--input" id="form_input" type="text" name="v" placeholder="http://youtube.com/watch?" />
 		</form>
+
+	<!--/div>
+	<div class="page page--bottom"-->
+		<div class="recent">
+			<div class="disc disc__link">
+				<div class="disc--mask disc--mask__border" 
+				style="background-image:url(https://i.ytimg.com/vi/dCI6v-i3qq4/mqdefault.jpg);"></div>
+				<div class="disc--title">Zero Cult - Liberation (180 mins)</div>
+			</div>
+			<div class="disc disc__link">
+				<div class="disc--mask disc--mask__border" 
+				style="background-image:url(https://i.ytimg.com/vi/dCI6v-i3qq4/mqdefault.jpg);"></div>
+				<div class="disc--title">Yo Mama - Whats up Mama (55 mins)</div>
+			</div>
+			<div class="disc disc__link">
+				<div class="disc--mask disc--mask__border" 
+				style="background-image:url(https://i.ytimg.com/vi/dCI6v-i3qq4/mqdefault.jpg);"></div>
+				<div class="disc--title">Pepe Deluxe² (18 mins)</div>
+			</div>
+			<div class="disc disc__link">
+				<div class="disc--mask disc--mask__border" 
+				style="background-image:url(https://i.ytimg.com/vi/dCI6v-i3qq4/mqdefault.jpg);"></div>
+				<div class="disc--title">Zero - Zero Mama (11 mins)</div>
+			</div>
+		<div>
 	</div>
 
 	<footer class="footer">
 		<span class="footer--info">&copy; <?php echo date('Y'); ?></span>
-		<a class="footer--info" href="http://timohausmann.de/" target="_blank">Impressum</a>
-		<a class="footer--info" href="http://trashnet.de/youloop_one/" target="_blank">alte Version</a>
-
+		<a class="footer--info" href="http://timohausmann.de/" target="_blank">Impressum</a>		
 		<iframe class="footer--like" src="http://www.facebook.com/plugins/like.php?href=https://www.facebook.com/Youloop1&amp;layout=button_count&amp;show_faces=false&amp;width=140&amp;action=like&amp;font&amp;colorscheme=dark&amp;height=21" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
 	</footer>
 

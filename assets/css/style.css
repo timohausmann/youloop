@@ -270,6 +270,13 @@ body {
   padding-bottom: 50px;
 }
 
+.page--bottom {
+  position: absolute;
+  left: 0;
+  bottom: 64px;
+  margin-left: 25%;
+}
+
 /*
  * @subsection Base Elements
  */
@@ -313,19 +320,18 @@ body {
  */
 
 .footer {
+  text-align: right;
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
   padding: 10px;
-  background: rgba(0, 0, 0, 0.75);
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   z-index: 10;
 }
 
 .footer--info {
-  float: left;
   margin-right: 20px;
   font-size: 12px;
   line-height: 21px;
@@ -333,11 +339,13 @@ body {
 }
 
 .footer--like {
-  float: right;
   border: 0;
   overflow: hidden;
   width: 115px;
   height: 21px;
+  display: inline-block;
+  position: relative;
+  top: 7px;
 }
 
 /*
@@ -497,6 +505,8 @@ body {
   overflow: hidden;
   border-radius: 45px;
   position: relative;
+  background-size: cover;
+  background-position: center;
 }
 
 .disc--image {
@@ -504,6 +514,57 @@ body {
   position: absolute;
   left: 50%;
   margin-left: -80px;
+}
+
+.disc__link {
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  margin-right: -45px;
+}
+
+.disc__link:hover {
+  margin-right: 10px;
+}
+
+.disc__link:hover .disc--mask__border {
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
+.disc--mask__border {
+  -webkit-transform: rotate(15deg);
+  transform: rotate(15deg);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.disc--title {
+  position: absolute;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.75px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 1rem;
+  left: 0%;
+  bottom: 102px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  -webkit-transform: translateY(16px) rotate(0);
+  transform: translateY(16px) rotate(0);
+  -webkit-transform-origin: bottom left;
+  transform-origin: bottom left;
+  opacity: 0;
+}
+
+.disc:hover .disc--title {
+  -webkit-transform: translateY(0) rotate(0);
+  transform: translateY(0) rotate(0);
+  -webkit-transform-origin: bottom left;
+  transform-origin: bottom left;
+  opacity: 1;
 }
 
 @-webkit-keyframes spinningDisc {
@@ -618,6 +679,11 @@ body {
     -webkit-transform: translateY(-50px);
     transform: translateY(-50px);
   }
+}
+
+.recent {
+  width: 200%;
+  margin-top: 64px;
 }
 
 /*
