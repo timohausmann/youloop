@@ -21,6 +21,11 @@
 	}
 }
 
+.form--caption__grey {
+	color: #999;
+	margin-bottom: -1rem;
+}
+
 .form--input {
 	position: relative;
 	display: block;
@@ -30,6 +35,7 @@
 	line-height: 60px;
 	padding: 0 10px;
 	width: 400px;
+	margin-bottom: 64px;
 	outline: 0;
 	border-radius: 0 30px 30px 0;
 

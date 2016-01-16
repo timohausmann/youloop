@@ -94,7 +94,9 @@
 
 	<!--/div>
 	<div class="page page--bottom"-->
-		<div class="recent" id="list"></div>
+		<div id="list">
+			<div class="form--caption form--caption__grey" for="form_input">History</div>
+		</div>
 	</div>
 
 	<footer class="footer">

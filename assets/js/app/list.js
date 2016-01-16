@@ -2,7 +2,11 @@ var APP = APP || {};
 
 APP.list = (function(window, $, undefined) {
 
+	var $list;
+
 	function init() {
+
+		$list = $('#list');
 
 		if( !Modernizr.localstorage ) return;
 
@@ -19,8 +23,12 @@ APP.list = (function(window, $, undefined) {
 			}	   
 		}
 
-		$('#list')
+		$list
 			.on('click', '[data-ytid]', handleClick);
+
+		if( !$list.find('.disc').length ) {
+			$list.fadeOut(500);
+		}
 	}
 
 
@@ -48,7 +56,9 @@ APP.list = (function(window, $, undefined) {
 		html += '	<div class="disc--title">' + videoData.title + '</div>';
 		html += '</div>';
 
-		$('#list').append( html );
+		$('#list')
+			.fadeIn(500)
+			.append( html );
 
 		//get unknown titles from old clients via ajax
 		if( title === '' ) {

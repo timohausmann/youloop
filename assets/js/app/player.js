@@ -54,6 +54,8 @@ APP.player = (function(window, $, undefined) {
 				$item
 					.detach()
 					.appendTo( $list );
+
+				$list.fadeIn(500);
 			}
 		}
 		
