@@ -50,19 +50,13 @@
 }
 
 
-
-
-
-
-
-
 .disc__link {
 	cursor: pointer;
 	transition: 0.3s;
 	margin-right: -45px;
 	margin-bottom: 45px;
 
-	&:nth-child(8n + 9) {
+	&:nth-child(8n + 10) {
 		clear: left;
 	}
 
@@ -73,9 +67,7 @@
 			transform: rotate(0deg);
 			border-color: #ccc;
 		}
-	}
-
-	
+	}	
 }
 
 .disc--mask__border {
@@ -97,17 +89,21 @@
 	bottom: 102px;
 	//width: 120px;
 
-	transition: 0.4s;
+	transition: 0.4s transform, 0.4s opacity, 0 0.4s visibility;
 	transform: translateX(-50%) translateY(16px);
 	transform-origin: bottom left;
 	//transform: rotate(-45deg);
 	opacity: 0;
+	visibility: hidden;
 }
 
 .disc:hover .disc--title {
 	transform: translateX(-50%) translateY(0);
 	transform-origin: bottom left;
+
+	transition: 0.4s transform, 0.4s opacity, 0.4s visibility;
 	opacity: 1;
+	visibility: visible;
 }
 
 

@@ -524,7 +524,7 @@ body {
   margin-bottom: 45px;
 }
 
-.disc__link:nth-child(8n + 9) {
+.disc__link:nth-child(8n + 10) {
   clear: left;
 }
 
@@ -557,13 +557,14 @@ body {
   line-height: 1rem;
   left: 50%;
   bottom: 102px;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
+  -webkit-transition: 0.4s -webkit-transform, 0.4s opacity, 0 0.4s visibility;
+  transition: 0.4s transform, 0.4s opacity, 0 0.4s visibility;
   -webkit-transform: translateX(-50%) translateY(16px);
   transform: translateX(-50%) translateY(16px);
   -webkit-transform-origin: bottom left;
   transform-origin: bottom left;
   opacity: 0;
+  visibility: hidden;
 }
 
 .disc:hover .disc--title {
@@ -571,7 +572,10 @@ body {
   transform: translateX(-50%) translateY(0);
   -webkit-transform-origin: bottom left;
   transform-origin: bottom left;
+  -webkit-transition: 0.4s -webkit-transform, 0.4s opacity, 0.4s visibility;
+  transition: 0.4s transform, 0.4s opacity, 0.4s visibility;
   opacity: 1;
+  visibility: visible;
 }
 
 @-webkit-keyframes spinningDisc {
