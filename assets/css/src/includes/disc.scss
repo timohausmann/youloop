@@ -15,7 +15,7 @@
 	width: 16px;
 	height: 16px;
 	left: 38px;
-	top: 38px;
+	bottom: 38px;
 	background: #000;
 }
 
@@ -54,18 +54,17 @@
 	cursor: pointer;
 	transition: 0.3s;
 	margin-right: -45px;
-	margin-bottom: 45px;
-
-	&:nth-child(8n + 10) {
-		clear: left;
-	}
+	padding-top: 24px;
+	margin-bottom: 25px;
 
 	&:hover {
 		margin-right: 10px;
+		//z-index: 100 !important;
 
 		.disc--mask__border {
 			transform: rotate(0deg);
-			border-color: #ccc;
+			//border-color: #ccc;
+
 		}
 	}	
 }

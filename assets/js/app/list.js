@@ -8,6 +8,51 @@ APP.list = (function(window, $, undefined) {
 
 		$list = $('#list');
 
+		$list
+			.on('click', '[data-ytid]', handleClick);
+
+		$('#list_all').on('click', handleToggle);
+
+		load();
+	}
+
+
+	function handleClick() {
+
+		var $this = $(this),
+			id = $this.data('ytid'),
+			title = $this.find('.disc--title').text();
+
+		APP.player.load({
+			id: id,
+			title:  title
+		});
+	}
+
+
+	function handleToggle() {
+
+		$(this).toggleClass('list--all__active');
+		$list.toggleClass('list__open');
+
+		var itemCount = $list.find('.disc').length;
+
+		if( $list.hasClass('list__open') ) {
+
+			$list.css('max-height', (139*Math.ceil(itemCount/8)) + 'px');
+		} else {
+
+			$list
+				.removeAttr('style')
+				.on( APP.transitEndEvent, function() {
+
+				});
+		}
+	}
+
+
+	function load() {
+
 		if( !Modernizr.localstorage ) return;
 
 		for (var key in localStorage) {
@@ -23,26 +68,11 @@ APP.list = (function(window, $, undefined) {
 			}	   
 		}
 
-		$list
-			.on('click', '[data-ytid]', handleClick);
+		updateZIndex();
 
 		if( !$list.find('.disc').length ) {
 			$list.fadeOut(500);
 		}
-	}
-
-
-	function handleClick() {
-
-		var $this = $(this),
-			id = $this.data('ytid'),
-			title = $this.find('.disc--title').text();
-		//console.log(id);
-
-		APP.player.load({
-			id: id,
-			title:  title
-		});
 	}
 
 
@@ -58,7 +88,7 @@ APP.list = (function(window, $, undefined) {
 
 		$('#list')
 			.fadeIn(500)
-			.append( html );
+			.prepend( html );
 
 		//get unknown titles from old clients via ajax
 		if( title === '' ) {
@@ -72,6 +102,21 @@ APP.list = (function(window, $, undefined) {
 				success: migrateTitle
 			});
 		}
+	}
+
+
+	/**
+	 * updateZIndex
+	 */
+	function updateZIndex() {
+
+		var $discs = $('#list .disc'),
+			l = $discs.length;
+
+		$discs.each(function(i) {
+
+			$(this).css('z-index', (l-i));
+		});
 	}
 
 
@@ -91,7 +136,8 @@ APP.list = (function(window, $, undefined) {
 
 	return {
 		init: init,
-		add: add
+		add: add,
+		updateZIndex: updateZIndex
 	};
 
 })(window, jQuery);

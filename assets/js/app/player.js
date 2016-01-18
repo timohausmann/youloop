@@ -49,13 +49,15 @@ APP.player = (function(window, $, undefined) {
 
 			if( !$item.length ) {
 				APP.list.add(videoData);
+				APP.list.updateZIndex();
 			} else {
 
 				$item
 					.detach()
-					.appendTo( $list );
+					.prependTo( $list );
 
 				$list.fadeIn(500);
+				APP.list.updateZIndex();
 			}
 		}
 		

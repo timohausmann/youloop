@@ -32,7 +32,7 @@
 	<meta property="fb:admins" content="100000133883995" />
 
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-	<link rel="stylesheet" href="assets/css/style.min.css" />
+	<link rel="stylesheet" href="assets/css/style.css" />
 
 	<script src="assets/js/libs/modernizr.min.js"></script>
 </head>
@@ -92,8 +92,10 @@
 			<input class="form--input" id="form_input" type="text" name="v" placeholder="http://youtube.com/watch?" />
 		</form>
 
-		<div id="list">
-			<div class="form--caption form--caption__grey" for="form_input">History</div>
+		<div class="list-wrap">
+			<div class="list--caption" for="form_input">History</div>
+			<div class="list" id="list"></div>
+			<div class="list--all" id="list_all" for="form_input">Alle anzeigen &hellip;</div>
 		</div>
 	</div>
 
@@ -108,7 +110,7 @@
 		google.load("swfobject", "2.1");
 	</script>
 
-<?php /*
+
 	<script src='assets/js/libs/jquery-1.10.2.min.js'></script>
 	<script src='assets/js/app/main.js'></script>
 	<script src='assets/js/app/form.js'></script>
@@ -117,9 +119,6 @@
 	<script src='assets/js/app/counter.js'></script>
 	<script src='assets/js/app/list.js'></script>
 	<script src='assets/js/app/load.js'></script>
-*/ ?>
-
-	<script src='assets/js/script.min.js'></script>
 	
 </body>
 </html>
