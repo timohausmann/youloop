@@ -65,7 +65,7 @@ APP.list = (function(window, $, undefined) {
 					id: ytid,
 					title: localStorage.getItem('youloop_title_' + ytid)
 				});
-			}	   
+			}
 		}
 
 		updateZIndex();

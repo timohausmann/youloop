@@ -105,12 +105,6 @@
 		<iframe class="footer--like" src="http://www.facebook.com/plugins/like.php?href=https://www.facebook.com/Youloop1&amp;layout=button_count&amp;show_faces=false&amp;width=140&amp;action=like&amp;font&amp;colorscheme=dark&amp;height=21" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
 	</footer>
 
-	<script src="http://www.google.com/jsapi"></script>
-	<script>
-		google.load("swfobject", "2.1");
-	</script>
-
-
 	<script src='assets/js/libs/jquery-1.10.2.min.js'></script>
 	<script src='assets/js/app/main.js'></script>
 	<script src='assets/js/app/form.js'></script>

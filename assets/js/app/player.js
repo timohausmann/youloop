@@ -4,6 +4,15 @@ APP.player = (function(window, $, undefined) {
 
 	var	$player = $('#player'),
 		yt_dom_id = 'player_media',
+		player,
+
+		is_api_loaded = false,
+
+		/*
+		 * @var cued_video_id
+		 * cue id when api is not loaded yet
+		 */
+		cued_video_id,
 
 		/*
 		 * @var is_player_visible
@@ -18,6 +27,11 @@ APP.player = (function(window, $, undefined) {
 	 */
 	function init() {
 
+		var tag = document.createElement('script');
+
+		tag.src = "https://www.youtube.com/iframe_api";
+		var firstScriptTag = document.getElementsByTagName('script')[0];
+		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 	}
 
 
@@ -83,33 +97,19 @@ APP.player = (function(window, $, undefined) {
 	 * @param String video_id	The youtube video id
 	 */
 	function create( video_id ) {
-		
+
 		if( typeof video_id === 'undefined' ) return;
-		
-		var	urlParams = {
-				enablejsapi: 1,
-				playerapiid: 'ytplayer',
-				fs: 1,
-				loop: 1,
-				autoplay: 1,
-				version: 3
-			},
-			embedUrl = 'http://www.youtube.com/v/'+ video_id + '?',
-			params = { 
-				allowFullScreen: "true",
-				allowScriptAccess: "always", 
-				bgcolor: "#000000" 
-			},
-			atts = { 
-				id: yt_dom_id 
-			},	
-			flashvars = {};
-		
-		for( var key in urlParams ) {
-			embedUrl += key + '=' + urlParams[key] + '&';
+
+		if( !is_api_loaded ) {
+			cued_video_id = video_id;
+			return;
 		}
-		
-		swfobject.embedSWF(embedUrl, yt_dom_id, "550", "309", "9", null, flashvars, params, atts);
+
+		if( player ) {
+			player.loadVideoById(video_id);
+		} else {
+			initPlayer(video_id);
+		}
 	}
 	
 
@@ -144,54 +144,85 @@ APP.player = (function(window, $, undefined) {
 	 * EventListener for YouTube API : end
 	 */
 	function onVideoEnd() {
-		var ytplayer = document.getElementById("player_media");
-		ytplayer.playVideo();
-	}
-	
-	
-	/*
-	 * YouTube API onYouTubePlayerReady
-	 */
-	window.onYouTubePlayerReady = function(playerId) {
-		var player = document.getElementById(yt_dom_id);
-		player.addEventListener("onStateChange", "onPlayerStateChange");
-	};
-
-
-	/*
-	 * YouTube API onPlayerStateChange
-	 */
-	window.onPlayerStateChange = function(state) {
+		if( player ) {
+			player.playVideo();
+		}
 		
+	}
+
+
+	/*
+	 * YouTube API onYouTubeIframeAPIReady
+	 */
+	window.onYouTubeIframeAPIReady = function() {
+		is_api_loaded = true;
+
+		if( cued_video_id ) {
+			initPlayer(cued_video_id);
+		}
+    };
+
+    /**
+     * initPlayer
+     * Load the player initially
+     */
+    function initPlayer(video_id) {
+		player = new YT.Player(yt_dom_id, {
+			videoId: video_id,
+			height: '309',
+			width: '550',
+			/*playerVars: {
+				loop: 1,
+				playlist: video_id
+			},*/
+			events: {
+				'onReady': onPlayerReady,
+				'onStateChange': onPlayerStateChange
+			}
+		});
+    }
+
+    /**
+     * onPlayerReady
+     */
+    function onPlayerReady(event) {
+		event.target.playVideo();
+    }
+
+    /**
+     * onPlayerStateChange
+     */
+	function onPlayerStateChange(event) {
+
 		var trace;
 		
-		switch(state) {
+		switch(event.data) {
 			case -1:
 				trace = "unstarted";
 				break;
-			case 0:
+			case YT.PlayerState.ENDED:
 				trace = "video ended";
 				APP.player.onVideoEnd();
 				break;
-			case 1:
+			case YT.PlayerState.PLAYING:
 				trace = "video started";
 				APP.player.onVideoPlay();
 				break;
-			case 2:
+			case YT.PlayerState.PAUSED:
 				trace = "video paused";
 				APP.player.onVideoPause();
 				break;
-			case 3:
+			case YT.PlayerState.BUFFERING:
 				trace = "buffering..";
 				break;
-			case 5:
+			case YT.PlayerState.CUED:
 				trace = "video cued";
 				break;
 			default:
 				trace = "unknown process";
 		}
-		console.log(trace);	
-	};
+		//console.log(trace);	
+	}
 	
 
 	return {
