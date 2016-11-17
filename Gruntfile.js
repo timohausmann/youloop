@@ -7,7 +7,17 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-	grunt.task.registerTask('build', ['sass:scss', 'autoprefixer:scss',  'cssmin:minify', 'uglify:scripts']);
+	grunt.task.registerTask('build', ['buildJson', 'sass:scss', 'autoprefixer:scss',  'cssmin:minify', 'uglify:scripts']);
+
+	grunt.registerTask('buildJson', 'A sample task', function() {
+
+		var fileConfig = {
+			timestamp: Date.now()
+		};
+
+		grunt.log.writeln('writing to build.json');
+		grunt.file.write('build.json', JSON.stringify(fileConfig) );
+	});
 
 	grunt.initConfig({
 

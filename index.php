@@ -1,4 +1,4 @@
-<!doctype html>
+<?php include('config.php'); ?><!doctype html>
 
 <!--
         just..	___                                                   
@@ -25,14 +25,15 @@
 
 	<!-- facebook like -->
 	<meta property='og:title' content='Youloop - Loop Youtube Videos!' />
-	<meta property="og:type" content="website" />
-	<meta property="og:url" content="http://trashnet.de/youloop/" />
+	<meta property='og:type' content='website' />
+	<meta property='og:url' content='http://trashnet.de/youloop/' />
 	<meta property='og:image' content='http://trashnet.de/youloop/assets/img/youloop_facebook.png' />
 	<meta property='og:description' content='Mit Youloop kann man ganz einfach Youtube-Videos auf Dauerschleife abspielen!' />
-	<meta property="fb:admins" content="100000133883995" />
+	<meta property='fb:admins' content='100000133883995' />
 
+	<?php $css = $config['devmode'] ? 'style.css' : 'style.min.css';
+	?><link rel="stylesheet" href="assets/css/<?php echo $css . '?v=' . $config['timestamp']; ?>" />
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-	<link rel="stylesheet" href="assets/css/style.css" />
 
 	<script src="assets/js/libs/modernizr.min.js"></script>
 </head>
@@ -105,6 +106,8 @@
 		<iframe class="footer--like" src="http://www.facebook.com/plugins/like.php?href=https://www.facebook.com/Youloop1&amp;layout=button_count&amp;show_faces=false&amp;width=140&amp;action=like&amp;font&amp;colorscheme=dark&amp;height=21" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
 	</footer>
 
+	<?php if( $config['devmode'] ) { ?>
+
 	<script src='assets/js/libs/jquery-1.10.2.min.js'></script>
 	<script src='assets/js/app/main.js'></script>
 	<script src='assets/js/app/form.js'></script>
@@ -113,6 +116,10 @@
 	<script src='assets/js/app/counter.js'></script>
 	<script src='assets/js/app/list.js'></script>
 	<script src='assets/js/app/load.js'></script>
+
+	<?php } else { ?>
+	<script src='assets/js/script.min.js?v=<?php echo $config['timestamp']; ?>'></script>
+	<?php } ?>
 	
 </body>
 </html>
