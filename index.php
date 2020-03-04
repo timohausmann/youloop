@@ -90,7 +90,7 @@
 		
 		<form action="" method="post" class="form" id="form">
 			<label class="form--caption" for="form_input">Kopiere einfach die <dfn>Video-URL von YouTube</dfn> in dieses Feld:</label>
-			<input class="form--input" id="form_input" type="text" name="v" placeholder="http://youtube.com/watch?" />
+			<input class="form--input" id="form_input" type="text" name="v" placeholder="https://youtube.com/watch?" />
 		</form>
 
 		<div class="list-wrap">
@@ -102,8 +102,8 @@
 
 	<footer class="footer">
 		<span class="footer--info">&copy; <?php echo date('Y'); ?></span>
-		<a class="footer--info" href="http://timohausmann.de/" target="_blank">Impressum</a>		
-		<iframe class="footer--like" src="http://www.facebook.com/plugins/like.php?href=https://www.facebook.com/Youloop1&amp;layout=button_count&amp;show_faces=false&amp;width=140&amp;action=like&amp;font&amp;colorscheme=dark&amp;height=21" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+		<a class="footer--info" href="https://trashnet.de/youloop/datenschutz.php" target="_blank">Datenschutz</a>
+		<a class="footer--info" href="https://timohausmann.de/impressum/" target="_blank">Impressum</a>
 	</footer>
 
 	<?php if( $config['devmode'] ) { ?>
