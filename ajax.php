@@ -1,4 +1,5 @@
-<?php
+<?php 
+
 	if( !isset($_GET['url']) ) {
 		die('<pre>giev teh parameters kthx</pre>');
 	}
@@ -26,11 +27,16 @@
 	}
 	
 	function youtubeVideoData($id) {
+
+		if (file_exists('ajax_config.php')) {
+			include('ajax_config.php');
+		} else {
+			die('Error: could not find ajax_config.php. Please duplicate ajax_config_.php with your YouTube API key.');
+		}
 		
 		libxml_use_internal_errors(true);
 
-		$key = 'AIzaSyB7y32e18_bwukOKLsmn31ylWzhGXUR3Fc';
-		$url = 'https://www.googleapis.com/youtube/v3/videos?id='. $id .'&key='. $key .'&part=snippet';
+		$url = 'https://www.googleapis.com/youtube/v3/videos?id='. $id .'&key='. $config['apikey'] .'&part=snippet';
 		$json = file_get_contents($url);
 		$data = json_decode($json);
 		

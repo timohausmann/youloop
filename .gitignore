@@ -9,3 +9,6 @@ tmp
 
 #node
 node_modules
+
+#secrets
+ajax_config.php
